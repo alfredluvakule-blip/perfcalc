@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="design_doc_mode" content="canvas">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#E8EDF1;font-family:"IBM Plex Sans",sans-serif;color:#12212E}
+a{color:#0F5499;text-decoration:none}a:hover{color:#0A3D6B}
+.dv-turn{padding:40px 44px 32px;scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 24px}
+.dv-tid{font:600 10px "IBM Plex Mono",monospace;padding:3px 7px;background:#0A2E4E;color:#fff;border-radius:4px;text-decoration:none}
+.dv-tname{font:600 13px/1.2 "IBM Plex Sans",sans-serif;color:#12212E}
+.dv-opts{display:flex;flex-wrap:wrap;gap:36px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}
+.dv-oid{font:600 10.5px "IBM Plex Mono",monospace;padding:3px 7px;background:rgba(10,46,78,.1);color:#0A2E4E;border-radius:5px;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11.5px/1.3 "IBM Plex Sans",sans-serif;color:rgba(18,33,46,.6)}
+.dv-card{background:#fff;border:1px solid rgba(10,46,78,.12);border-radius:10px;box-shadow:0 2px 8px rgba(10,46,78,.08);overflow:hidden}
+.dv-opt:target .dv-oid{background:#0F5499;color:#fff}
+.dv-next{margin:26px 0 0;font:12px/1.5 "IBM Plex Sans",sans-serif;color:rgba(18,33,46,.5)}
+</style>
+</helmet>
+
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Perfusion Tanzania — hi-fi key screens · IBM Plex · clinical blue/green, ministry-grade</span></div>
+<div class="dv-opts">
+
+<!-- ============ 1a LANDING PAGE ============ -->
+<div class="dv-opt" id="1a"><div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a><span>Landing page</span></div>
+<div class="dv-card" style="width:1440px" data-screen-label="Landing page">
+
+  <!-- top nav -->
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 56px;border-bottom:1px solid #DCE4EA;background:#fff">
+    <div style="display:flex;align-items:center;gap:11px">
+      <div style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#0F5499 50%,#1F8A5B 50%)"></div>
+      <div style="font-size:17px;font-weight:400;letter-spacing:-0.01em"><span>Perfusion</span> <span style="font-weight:700;color:#0A2E4E">Tanzania</span></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:32px;font-size:14.5px;font-weight:500;color:#3D4F5E">
+      <span>News</span><span>Research</span><span>Forum</span><span>Events</span><span>Jobs</span><span>Hospitals</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="font-size:14.5px;font-weight:600;color:#0F5499;padding:9px 16px">Sign in</div>
+      <div style="font-size:14.5px;font-weight:600;color:#fff;background:#0F5499;padding:9px 20px;border-radius:6px">Join the community</div>
+    </div>
+  </div>
+
+  <!-- hero -->
+  <div style="background:#0A2E4E;color:#fff;padding:88px 56px 0">
+    <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center">
+      <div style="padding-bottom:88px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#7FC8A9;margin-bottom:20px">Karibu · Jumuiya ya Wataalamu</div>
+        <div style="font-size:52px;line-height:1.12;font-weight:700;letter-spacing:-0.02em;margin-bottom:22px;text-wrap:balance">Our Community of Perfusion Professionals</div>
+        <div style="font-size:18px;line-height:1.6;color:#B9CBDA;max-width:520px;margin-bottom:36px">The official national platform connecting cardiovascular perfusionists across Tanzania — to network, learn, share research and advance cardiac care.</div>
+        <div style="display:flex;gap:14px">
+          <div style="background:#1F8A5B;color:#fff;font-size:15.5px;font-weight:600;padding:14px 28px;border-radius:6px">Become a member</div>
+          <div style="border:1px solid rgba(255,255,255,.35);color:#fff;font-size:15.5px;font-weight:600;padding:14px 28px;border-radius:6px">Explore research</div>
+        </div>
+      </div>
+      <div style="align-self:stretch;border-radius:10px 10px 0 0;overflow:hidden;position:relative;min-height:380px">
+        <img src="uploads/IMG-20220107-WA0000.jpg" alt="Perfusion team in theatre" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+        <div style="position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,rgba(10,46,78,.9));padding:48px 20px 14px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#B9D3EA">Kazi ya moyo — the perfusion team in theatre</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- stats band -->
+  <div style="background:#0F5499;color:#fff;padding:34px 56px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px">
+    <div style="border-left:1px solid rgba(255,255,255,.25);padding-left:22px"><div style="font-size:36px;font-weight:700">412</div><div style="font-size:13.5px;color:#B9D3EA;margin-top:2px">Registered members</div></div>
+    <div style="border-left:1px solid rgba(255,255,255,.25);padding-left:22px"><div style="font-size:36px;font-weight:700">168</div><div style="font-size:13.5px;color:#B9D3EA;margin-top:2px">Published research</div></div>
+    <div style="border-left:1px solid rgba(255,255,255,.25);padding-left:22px"><div style="font-size:36px;font-weight:700">37</div><div style="font-size:13.5px;color:#B9D3EA;margin-top:2px">Partner hospitals</div></div>
+    <div style="border-left:1px solid rgba(255,255,255,.25);padding-left:22px"><div style="font-size:36px;font-weight:700">1,240</div><div style="font-size:13.5px;color:#B9D3EA;margin-top:2px">Active discussions</div></div>
+  </div>
+
+  <!-- latest news -->
+  <div style="padding:72px 56px 64px;background:#F4F7F9">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:32px">
+      <div><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#1F8A5B;margin-bottom:8px">Habari · News</div><div style="font-size:30px;font-weight:700;letter-spacing:-0.01em">Latest from the community</div></div>
+      <div style="font-size:14.5px;font-weight:600;color:#0F5499">All news →</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+      <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;overflow:hidden">
+        <div style="height:160px;overflow:hidden"><img src="uploads/IMG-20220208-WA0012.jpg" alt="Perfusionist charting during bypass" style="width:100%;height:100%;object-fit:cover;object-position:center 30%"></div>
+        <div style="padding:20px 22px 22px">
+          <div style="display:flex;gap:8px;margin-bottom:12px"><span style="font-size:11.5px;font-weight:600;color:#0F5499;background:#E6EFF7;padding:4px 10px;border-radius:99px">Hospital news</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#5B6B78;padding:4px 0">02 Jul 2026</span></div>
+          <div style="font-size:17px;font-weight:600;line-height:1.4;margin-bottom:8px">JKCI completes its 500th open-heart surgery of the year</div>
+          <div style="font-size:13.5px;line-height:1.55;color:#5B6B78">A milestone for the national cardiac programme, with perfusion teams supporting record case volumes.</div>
+        </div>
+      </div>
+      <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;overflow:hidden">
+        <div style="height:160px;overflow:hidden"><img src="uploads/50ff9de6-0f77-4b4b-9e11-53e9b219acfb.jpg" alt="Perfusionists at the heart-lung machine" style="width:100%;height:100%;object-fit:cover;object-position:center 35%"></div>
+        <div style="padding:20px 22px 22px">
+          <div style="display:flex;gap:8px;margin-bottom:12px"><span style="font-size:11.5px;font-weight:600;color:#1F8A5B;background:#E4F2EB;padding:4px 10px;border-radius:99px">Training</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#5B6B78;padding:4px 0">28 Jun 2026</span></div>
+          <div style="font-size:17px;font-weight:600;line-height:1.4;margin-bottom:8px">Applications open for the 2027 perfusion scholarship cohort</div>
+          <div style="font-size:13.5px;line-height:1.55;color:#5B6B78">Twelve fully funded places for clinical officers and nurses entering perfusion training.</div>
+        </div>
+      </div>
+      <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;overflow:hidden">
+        <div style="height:160px;overflow:hidden"><img src="uploads/IMG_4806.jpg" alt="Extracorporeal circuit during a case" style="width:100%;height:100%;object-fit:cover;object-position:center 40%"></div>
+        <div style="padding:20px 22px 22px">
+          <div style="display:flex;gap:8px;margin-bottom:12px"><span style="font-size:11.5px;font-weight:600;color:#0A2E4E;background:#E8EDF1;padding:4px 10px;border-radius:99px">Government</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#5B6B78;padding:4px 0">21 Jun 2026</span></div>
+          <div style="font-size:17px;font-weight:600;line-height:1.4;margin-bottom:8px">MoH publishes updated national ECMO service guidance</div>
+          <div style="font-size:13.5px;line-height:1.55;color:#5B6B78">New referral pathways and staffing standards for extracorporeal support services.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- conference + featured thesis -->
+  <div style="padding:0 56px 72px;background:#F4F7F9;display:grid;grid-template-columns:1.2fr 1fr;gap:24px">
+    <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:28px 30px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#1F8A5B;margin-bottom:18px">Upcoming conferences</div>
+      <div style="display:flex;gap:18px;padding:16px 0;border-bottom:1px solid #EDF1F5;align-items:center">
+        <div style="text-align:center;background:#E6EFF7;border-radius:6px;padding:10px 14px;min-width:58px"><div style="font-size:22px;font-weight:700;color:#0F5499">14</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#0F5499">AUG</div></div>
+        <div style="flex:1"><div style="font-size:16px;font-weight:600;margin-bottom:3px">Tanzania Perfusion Society Annual Conference 2026</div><div style="font-size:13px;color:#5B6B78">Julius Nyerere Convention Centre, Dar es Salaam · 3 days</div></div>
+        <div style="font-size:13.5px;font-weight:600;color:#fff;background:#0F5499;padding:9px 18px;border-radius:6px">Register</div>
+      </div>
+      <div style="display:flex;gap:18px;padding:16px 0;align-items:center">
+        <div style="text-align:center;background:#E4F2EB;border-radius:6px;padding:10px 14px;min-width:58px"><div style="font-size:22px;font-weight:700;color:#1F8A5B">05</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#1F8A5B">SEP</div></div>
+        <div style="flex:1"><div style="font-size:16px;font-weight:600;margin-bottom:3px">ECMO Simulation Workshop — East Africa</div><div style="font-size:13px;color:#5B6B78">Bugando Medical Centre, Mwanza · 2 days</div></div>
+        <div style="font-size:13.5px;font-weight:600;color:#0F5499;border:1px solid #0F5499;padding:8px 18px;border-radius:6px">Details</div>
+      </div>
+    </div>
+    <div style="background:#0A2E4E;color:#fff;border-radius:8px;padding:28px 30px;display:flex;flex-direction:column">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#7FC8A9;margin-bottom:18px">Featured research</div>
+      <div style="font-size:19px;font-weight:600;line-height:1.45;margin-bottom:12px">Cardiopulmonary bypass complications and their predictors in open-heart surgery at a tertiary cardiac care facility in Tanzania</div>
+      <div style="font-size:13.5px;color:#B9CBDA;margin-bottom:auto">Alfred Luvakule, Silas Gamba, Edwin Lugazia · Global Cardiology Science and Practice, 2026</div>
+      <div style="display:flex;gap:18px;margin-top:22px;font-size:13.5px;font-weight:600"><span style="color:#7FC8A9">Read abstract →</span><span style="color:#B9CBDA">Download PDF</span></div>
+    </div>
+  </div>
+
+  <!-- photo strip -->
+  <div style="padding:64px 56px;background:#fff;border-top:1px solid #DCE4EA">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#1F8A5B;margin-bottom:10px">Kutoka chumba cha pampu</div>
+    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:28px"><div style="font-size:30px;font-weight:700;letter-spacing:-0.01em">From the pump room</div><div style="font-size:14.5px;color:#5B6B78">Photos shared by members across Tanzania</div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px">
+      <div style="display:flex;flex-direction:column;gap:10px"><div style="height:340px;border-radius:8px;overflow:hidden"><img src="uploads/IMG_2203.jpg" alt="I keep you alive without heart and lungs" style="width:100%;height:100%;object-fit:cover"></div><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5B6B78">“I keep you alive without heart and lungs”</div></div>
+      <div style="display:flex;flex-direction:column;gap:10px"><div style="height:340px;border-radius:8px;overflow:hidden"><img src="uploads/9e9f3da3-f941-4d36-9f83-5f1e97d2d4de.jpg" alt="Perfusion team between cases" style="width:100%;height:100%;object-fit:cover;object-position:center 25%"></div><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5B6B78">The team between cases — pamoja daima</div></div>
+      <div style="display:flex;flex-direction:column;gap:10px"><div style="height:340px;border-radius:8px;overflow:hidden"><img src="uploads/IMG_4474.jpg" alt="Perfusion workstation monitors" style="width:100%;height:100%;object-fit:cover"></div><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5B6B78">The perfusionist's cockpit — every number matters</div></div>
+    </div>
+  </div>
+
+  <!-- testimonial + partners -->
+  <div style="padding:64px 56px;background:#fff;border-top:1px solid #DCE4EA;display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:center">
+    <div>
+      <div style="font-size:23px;line-height:1.55;font-weight:500;color:#12212E;margin-bottom:22px">“Before this platform, perfusionists in the regions worked in isolation. Now we can discuss a difficult case with colleagues across the country the same evening — and mentor the next generation as one community.”</div>
+      <div style="display:flex;align-items:center;gap:14px">
+        <div style="width:44px;height:44px;border-radius:50%;background:#E6EFF7;display:flex;align-items:center;justify-content:center;font-weight:700;color:#0F5499;font-size:15px">AL</div>
+        <div><div style="font-size:14.5px;font-weight:600">Alfred Deo Luvakule</div><div style="font-size:12.5px;color:#5B6B78">First Perfusion Specialist in Tanzania · Anaesthetist</div></div>
+      </div>
+    </div>
+    <div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#5B6B78;margin-bottom:18px">Partners &amp; supporters</div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px">
+        <div style="border:1px solid #DCE4EA;border-radius:6px;padding:14px;text-align:center;font-size:13px;font-weight:600;color:#5B6B78">Ministry of Health</div>
+        <div style="border:1px solid #DCE4EA;border-radius:6px;padding:14px;text-align:center;font-size:13px;font-weight:600;color:#5B6B78">JKCI</div>
+        <div style="border:1px solid #DCE4EA;border-radius:6px;padding:14px;text-align:center;font-size:13px;font-weight:600;color:#5B6B78">MUHAS</div>
+        <div style="border:1px solid #DCE4EA;border-radius:6px;padding:14px;text-align:center;font-size:13px;font-weight:600;color:#5B6B78">Bugando MC</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- newsletter + footer -->
+  <div style="background:#0A2E4E;color:#fff;padding:56px 56px 40px">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:40px;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.15)">
+      <div><div style="font-size:22px;font-weight:700;margin-bottom:6px">Pata habari kila wiki</div><div style="font-size:14px;color:#B9CBDA">Weekly digest of news, research and opportunities.</div></div>
+      <div style="display:flex;gap:10px">
+        <div style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:6px;padding:12px 18px;font-size:14px;color:#B9CBDA;width:300px">you@hospital.go.tz</div>
+        <div style="background:#1F8A5B;border-radius:6px;padding:12px 24px;font-size:14.5px;font-weight:600">Subscribe</div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;padding-top:26px;font-size:13px;color:#7FA8C9">
+      <div style="display:flex;align-items:center;gap:9px"><div style="width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,#0F5499 50%,#1F8A5B 50%)"></div><span>Perfusion Tanzania · © 2026</span></div>
+      <div style="display:flex;gap:26px"><span>About</span><span>Membership</span><span>Guidelines</span><span>Contact</span><span>Privacy</span></div>
+    </div>
+  </div>
+
+</div></div>
+
+<!-- ============ 1b MEMBER DASHBOARD ============ -->
+<div class="dv-opt" id="1b"><div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a><span>Member dashboard</span></div>
+<div class="dv-card" style="width:1440px;display:flex" data-screen-label="Member dashboard">
+
+  <!-- sidebar -->
+  <div style="width:232px;flex:none;background:#0A2E4E;color:#fff;display:flex;flex-direction:column;min-height:940px">
+    <div style="display:flex;align-items:center;gap:10px;padding:22px 22px 26px">
+      <div style="width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#4A90D0 50%,#3BA678 50%)"></div>
+      <div style="font-size:15px"><span>Perfusion</span> <b>Tanzania</b></div>
+    </div>
+    <div style="display:flex;flex-direction:column;font-size:14px;font-weight:500">
+      <div style="display:flex;align-items:center;gap:12px;padding:11px 22px;background:rgba(255,255,255,.1);border-left:3px solid #7FC8A9"><span style="width:8px;height:8px;border-radius:2px;background:#7FC8A9"></span><span>Dashboard</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:11px 22px;border-left:3px solid transparent;color:#B9CBDA"><span style="width:8px;height:8px;border-radius:2px;background:#3D6485"></span><span>News</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:11px 22px;border-left:3px solid transparent;color:#B9CBDA"><span style="width:8px;height:8px;border-radius:2px;background:#3D6485"></span><span>Research</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:11px 22px;border-left:3px solid transparent;color:#B9CBDA"><span style="width:8px;height:8px;border-radius:2px;background:#3D6485"></span><span>Forum</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:11px 22px;border-left:3px solid transparent;color:#B9CBDA"><span style="width:8px;height:8px;border-radius:2px;background:#3D6485"></span><span>Case sharing</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:11px 22px;border-left:3px solid transparent;color:#B9CBDA"><span style="width:8px;height:8px;border-radius:2px;background:#3D6485"></span><span>Jobs</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:11px 22px;border-left:3px solid transparent;color:#B9CBDA"><span style="width:8px;height:8px;border-radius:2px;background:#3D6485"></span><span>Events</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:11px 22px;border-left:3px solid transparent;color:#B9CBDA"><span style="width:8px;height:8px;border-radius:2px;background:#3D6485"></span><span>Learning</span></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 22px;border-left:3px solid transparent;color:#B9CBDA"><span style="display:flex;align-items:center;gap:12px"><span style="width:8px;height:8px;border-radius:2px;background:#3D6485"></span><span>Messages</span></span><span style="font-size:11px;font-weight:700;background:#1F8A5B;border-radius:99px;padding:2px 8px;color:#fff">3</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:11px 22px;border-left:3px solid transparent;color:#B9CBDA"><span style="width:8px;height:8px;border-radius:2px;background:#3D6485"></span><span>Hospitals</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:11px 22px;border-left:3px solid transparent;color:#B9CBDA"><span style="width:8px;height:8px;border-radius:2px;background:#3D6485"></span><span>Calculators</span></div>
+    </div>
+    <div style="margin:auto 16px 20px;background:rgba(255,255,255,.08);border-radius:8px;padding:16px 18px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#7FC8A9;margin-bottom:6px">CPD Points</div>
+      <div style="font-size:26px;font-weight:700">46 <span style="font-size:13px;font-weight:500;color:#B9CBDA">/ 60 this year</span></div>
+      <div style="height:5px;background:rgba(255,255,255,.15);border-radius:99px;margin-top:10px"><div style="height:5px;width:76%;background:#7FC8A9;border-radius:99px"></div></div>
+    </div>
+  </div>
+
+  <!-- main -->
+  <div style="flex:1;background:#F4F7F9;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;justify-content:space-between;background:#fff;border-bottom:1px solid #DCE4EA;padding:14px 32px">
+      <div style="display:flex;align-items:center;gap:10px;background:#F4F7F9;border:1px solid #DCE4EA;border-radius:6px;padding:9px 14px;width:360px;font-size:13.5px;color:#5B6B78"><span style="width:12px;height:12px;border:1.5px solid #5B6B78;border-radius:50%;display:inline-block"></span><span>Tafuta — members, research, forum…</span></div>
+      <div style="display:flex;align-items:center;gap:20px">
+        <div style="position:relative;width:34px;height:34px;border:1px solid #DCE4EA;border-radius:6px;display:flex;align-items:center;justify-content:center"><span style="width:10px;height:10px;border:1.5px solid #3D4F5E;border-radius:3px;display:inline-block"></span><span style="position:absolute;top:-4px;right:-4px;width:9px;height:9px;background:#C0392B;border-radius:50%;border:2px solid #fff"></span></div>
+        <div style="display:flex;align-items:center;gap:10px"><div style="width:34px;height:34px;border-radius:50%;background:#E6EFF7;display:flex;align-items:center;justify-content:center;font-weight:700;color:#0F5499;font-size:13px">AM</div><div><div style="font-size:13.5px;font-weight:600">Dkt. Amani Mwakyusa</div><div style="font-size:11.5px;color:#5B6B78">Perfusionist · JKCI</div></div></div>
+      </div>
+    </div>
+
+    <div style="padding:30px 32px 36px">
+      <div style="margin-bottom:24px"><div style="font-size:25px;font-weight:700;letter-spacing:-0.01em">Habari za asubuhi, Dkt. Amani</div><div style="font-size:13.5px;color:#5B6B78;margin-top:4px">Friday, 11 July 2026 · 2 cases scheduled at your hospital today</div></div>
+
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:22px">
+        <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:18px 20px"><div style="font-size:12.5px;font-weight:600;color:#5B6B78;margin-bottom:10px">Profile completion</div><div style="font-size:26px;font-weight:700;color:#0F5499">82%</div><div style="height:5px;background:#E8EDF1;border-radius:99px;margin-top:12px"><div style="height:5px;width:82%;background:#0F5499;border-radius:99px"></div></div></div>
+        <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:18px 20px"><div style="font-size:12.5px;font-weight:600;color:#5B6B78;margin-bottom:10px">CPD points earned</div><div style="font-size:26px;font-weight:700;color:#1F8A5B">46</div><div style="font-size:12px;color:#5B6B78;margin-top:12px">+8 this month</div></div>
+        <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:18px 20px"><div style="font-size:12.5px;font-weight:600;color:#5B6B78;margin-bottom:10px">Unread messages</div><div style="font-size:26px;font-weight:700">3</div><div style="font-size:12px;color:#5B6B78;margin-top:12px">Latest from N. Kessy</div></div>
+        <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:18px 20px"><div style="font-size:12.5px;font-weight:600;color:#5B6B78;margin-bottom:10px">Saved items</div><div style="font-size:26px;font-weight:700">12</div><div style="font-size:12px;color:#5B6B78;margin-top:12px">4 research · 8 forum</div></div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:22px">
+        <div style="display:flex;flex-direction:column;gap:22px">
+          <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:22px 24px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px"><div style="font-size:15.5px;font-weight:700">Discussion activity</div><div style="font-size:13px;font-weight:600;color:#0F5499">Open forum →</div></div>
+            <div style="display:flex;gap:14px;padding:13px 0;border-bottom:1px solid #EDF1F5;align-items:flex-start"><div style="width:34px;height:34px;flex:none;border-radius:50%;background:#E4F2EB;display:flex;align-items:center;justify-content:center;font-weight:700;color:#1F8A5B;font-size:12px">NK</div><div style="flex:1"><div style="font-size:14px;line-height:1.5"><b>Neema Kessy</b> replied to your thread <span style="color:#0F5499;font-weight:600">“Del Nido vs blood cardioplegia in adults”</span></div><div style="font-size:12px;color:#5B6B78;margin-top:3px">ECMO &amp; CPB · 24 min ago</div></div></div>
+            <div style="display:flex;gap:14px;padding:13px 0;border-bottom:1px solid #EDF1F5;align-items:flex-start"><div style="width:34px;height:34px;flex:none;border-radius:50%;background:#E6EFF7;display:flex;align-items:center;justify-content:center;font-weight:700;color:#0F5499;font-size:12px">JM</div><div style="flex:1"><div style="font-size:14px;line-height:1.5"><b>Dkt. Joseph Mallya</b> pinned <span style="color:#0F5499;font-weight:600">“Updated ACT monitoring protocol — comments welcome”</span></div><div style="font-size:12px;color:#5B6B78;margin-top:3px">Clinical Cases · 2 hrs ago</div></div></div>
+            <div style="display:flex;gap:14px;padding:13px 0;align-items:flex-start"><div style="width:34px;height:34px;flex:none;border-radius:50%;background:#F3E9DC;display:flex;align-items:center;justify-content:center;font-weight:700;color:#B7791F;font-size:12px">SL</div><div style="flex:1"><div style="font-size:14px;line-height:1.5"><b>Salma Lyimo</b> liked your reply in <span style="color:#0F5499;font-weight:600">“Priming volume reduction for &lt;5kg neonates”</span></div><div style="font-size:12px;color:#5B6B78;margin-top:3px">Students · yesterday</div></div></div>
+          </div>
+          <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:22px 24px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px"><div style="font-size:15.5px;font-weight:700">Latest publications</div><div style="font-size:13px;font-weight:600;color:#0F5499">Repository →</div></div>
+            <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid #EDF1F5;align-items:center"><div><div style="font-size:14px;font-weight:600;line-height:1.45">Retrospective review of ECMO outcomes in Tanzania, 2020–2025</div><div style="font-size:12px;color:#5B6B78;margin-top:3px">Mallya J, Kessy N · Research paper · East Afr Med J</div></div><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:#C0392B;border:1px solid #EBD4D0;border-radius:4px;padding:3px 8px;flex:none">PDF</span></div>
+            <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;align-items:center"><div><div style="font-size:14px;font-weight:600;line-height:1.45">Standard operating procedure: emergency circuit change-out</div><div style="font-size:12px;color:#5B6B78;margin-top:3px">JKCI Perfusion Unit · Protocol · v3.1</div></div><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:#C0392B;border:1px solid #EBD4D0;border-radius:4px;padding:3px 8px;flex:none">PDF</span></div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:22px">
+          <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:22px 24px">
+            <div style="font-size:15.5px;font-weight:700;margin-bottom:16px">Notifications</div>
+            <div style="display:flex;gap:12px;padding:11px 0;border-bottom:1px solid #EDF1F5"><span style="width:8px;height:8px;flex:none;border-radius:50%;background:#1F8A5B;margin-top:6px"></span><div><div style="font-size:13.5px;line-height:1.5">Your research upload was <b>approved</b></div><div style="font-size:11.5px;color:#5B6B78;margin-top:2px">1 hr ago</div></div></div>
+            <div style="display:flex;gap:12px;padding:11px 0;border-bottom:1px solid #EDF1F5"><span style="width:8px;height:8px;flex:none;border-radius:50%;background:#0F5499;margin-top:6px"></span><div><div style="font-size:13.5px;line-height:1.5">New job: <b>Perfusionist — Aga Khan Hospital</b></div><div style="font-size:11.5px;color:#5B6B78;margin-top:2px">3 hrs ago</div></div></div>
+            <div style="display:flex;gap:12px;padding:11px 0"><span style="width:8px;height:8px;flex:none;border-radius:50%;background:#B7791F;margin-top:6px"></span><div><div style="font-size:13.5px;line-height:1.5">Webinar starts in 2 days: <b>Myocardial protection</b></div><div style="font-size:11.5px;color:#5B6B78;margin-top:2px">yesterday</div></div></div>
+          </div>
+          <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:22px 24px">
+            <div style="font-size:15.5px;font-weight:700;margin-bottom:16px">Upcoming events</div>
+            <div style="display:flex;gap:14px;padding:11px 0;border-bottom:1px solid #EDF1F5;align-items:center"><div style="text-align:center;background:#E6EFF7;border-radius:6px;padding:7px 11px;min-width:46px"><div style="font-size:17px;font-weight:700;color:#0F5499">14</div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#0F5499">AUG</div></div><div><div style="font-size:13.5px;font-weight:600;line-height:1.4">TPS Annual Conference 2026</div><div style="font-size:11.5px;color:#5B6B78;margin-top:2px">Dar es Salaam · Registered ✓</div></div></div>
+            <div style="display:flex;gap:14px;padding:11px 0;align-items:center"><div style="text-align:center;background:#E4F2EB;border-radius:6px;padding:7px 11px;min-width:46px"><div style="font-size:17px;font-weight:700;color:#1F8A5B">05</div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#1F8A5B">SEP</div></div><div><div style="font-size:13.5px;font-weight:600;line-height:1.4">ECMO Simulation Workshop</div><div style="font-size:11.5px;color:#5B6B78;margin-top:2px">Mwanza · 12 CPD points</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div></div>
+
+<!-- ============ 1c USER PROFILE ============ -->
+<div class="dv-opt" id="1c"><div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a><span>User profile</span></div>
+<div class="dv-card" style="width:1440px;background:#F4F7F9" data-screen-label="User profile">
+
+  <div style="height:150px;position:relative;overflow:hidden;background:#0A2E4E"><img src="uploads/9DA104F3-C1A9-42A0-B163-14D65164A283.jpg" alt="Operating theatre" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.45;object-position:center 60%"></div>
+  <div style="padding:0 48px">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-top:-52px;margin-bottom:26px">
+      <div style="display:flex;align-items:flex-end;gap:22px">
+        <div style="width:120px;height:120px;border-radius:50%;background:#E6EFF7;border:4px solid #fff;display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:700;color:#0F5499;box-shadow:0 2px 8px rgba(10,46,78,.15)">NK</div>
+        <div style="padding-bottom:6px">
+          <div style="display:flex;align-items:center;gap:10px"><span style="font-size:26px;font-weight:700;letter-spacing:-0.01em">Neema Kessy</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:#1F8A5B;background:#E4F2EB;border-radius:99px;padding:4px 12px"><span style="width:7px;height:7px;border-radius:50%;background:#1F8A5B"></span><span>Verified perfusionist</span></span></div>
+          <div style="font-size:14.5px;color:#5B6B78;margin-top:5px">MSc Perfusion · Jakaya Kikwete Cardiac Institute · Dar es Salaam · 8 years experience</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;padding-bottom:8px">
+        <div style="font-size:13.5px;font-weight:600;color:#0F5499;border:1px solid #0F5499;padding:9px 20px;border-radius:6px;background:#fff">Download CV</div>
+        <div style="font-size:13.5px;font-weight:600;color:#fff;background:#0F5499;padding:9px 20px;border-radius:6px">Message</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:28px;border-bottom:1px solid #DCE4EA;font-size:14px;font-weight:600;color:#5B6B78;margin-bottom:26px">
+      <div style="padding:0 2px 12px;color:#0F5499;border-bottom:2px solid #0F5499">Overview</div>
+      <div style="padding:0 2px 12px">Research</div>
+      <div style="padding:0 2px 12px">Activity</div>
+      <div style="padding:0 2px 12px">Certifications</div>
+      <div style="padding:0 2px 12px">CPD record</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:22px;padding-bottom:44px">
+      <div style="display:flex;flex-direction:column;gap:22px">
+        <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:24px 26px">
+          <div style="font-size:15.5px;font-weight:700;margin-bottom:12px">Biography</div>
+          <div style="font-size:14px;line-height:1.65;color:#3D4F5E">Clinical perfusionist specialising in paediatric cardiopulmonary bypass and miniaturised circuit design. Lead perfusionist for the JKCI congenital programme since 2022, supporting 300+ cases annually. Passionate about mentoring perfusion students and building a national case registry.</div>
+        </div>
+        <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:24px 26px">
+          <div style="font-size:15.5px;font-weight:700;margin-bottom:14px">Research interests</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <span style="font-size:12.5px;font-weight:600;color:#0F5499;background:#E6EFF7;border-radius:99px;padding:6px 14px">Paediatric CPB</span>
+            <span style="font-size:12.5px;font-weight:600;color:#0F5499;background:#E6EFF7;border-radius:99px;padding:6px 14px">Miniaturised circuits</span>
+            <span style="font-size:12.5px;font-weight:600;color:#0F5499;background:#E6EFF7;border-radius:99px;padding:6px 14px">Myocardial protection</span>
+            <span style="font-size:12.5px;font-weight:600;color:#0F5499;background:#E6EFF7;border-radius:99px;padding:6px 14px">Bloodless priming</span>
+            <span style="font-size:12.5px;font-weight:600;color:#0F5499;background:#E6EFF7;border-radius:99px;padding:6px 14px">ECMO</span>
+          </div>
+        </div>
+        <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:24px 26px">
+          <div style="font-size:15.5px;font-weight:700;margin-bottom:14px">Recent publications</div>
+          <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid #EDF1F5;align-items:center"><div><div style="font-size:14px;font-weight:600;line-height:1.45">Outcomes of miniaturised cardiopulmonary bypass circuits in paediatric cardiac surgery at JKCI</div><div style="font-size:12px;color:#5B6B78;margin-top:3px">MSc thesis · Muhimbili University · 2026 · DOI 10.4314/eamj.2026.113</div></div><span style="font-size:12.5px;font-weight:600;color:#0F5499;flex:none">View →</span></div>
+          <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;align-items:center"><div><div style="font-size:14px;font-weight:600;line-height:1.45">Retrospective review of ECMO outcomes in Tanzania, 2020–2025</div><div style="font-size:12px;color:#5B6B78;margin-top:3px">Co-author · East Afr Med J · 2025</div></div><span style="font-size:12.5px;font-weight:600;color:#0F5499;flex:none">View →</span></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:22px">
+        <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:24px 26px">
+          <div style="font-size:15.5px;font-weight:700;margin-bottom:14px">Skills</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <span style="font-size:12.5px;font-weight:600;color:#3D4F5E;background:#F4F7F9;border:1px solid #DCE4EA;border-radius:99px;padding:6px 14px">Adult CPB</span>
+            <span style="font-size:12.5px;font-weight:600;color:#3D4F5E;background:#F4F7F9;border:1px solid #DCE4EA;border-radius:99px;padding:6px 14px">Paediatric CPB</span>
+            <span style="font-size:12.5px;font-weight:600;color:#3D4F5E;background:#F4F7F9;border:1px solid #DCE4EA;border-radius:99px;padding:6px 14px">VA ECMO</span>
+            <span style="font-size:12.5px;font-weight:600;color:#3D4F5E;background:#F4F7F9;border:1px solid #DCE4EA;border-radius:99px;padding:6px 14px">Cell salvage</span>
+            <span style="font-size:12.5px;font-weight:600;color:#3D4F5E;background:#F4F7F9;border:1px solid #DCE4EA;border-radius:99px;padding:6px 14px">ACT monitoring</span>
+          </div>
+        </div>
+        <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:24px 26px">
+          <div style="font-size:15.5px;font-weight:700;margin-bottom:14px">Certifications</div>
+          <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #EDF1F5;align-items:center"><span style="width:30px;height:30px;flex:none;border-radius:6px;background:#E4F2EB;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:#1F8A5B">CRT</span><div><div style="font-size:13.5px;font-weight:600">Certified Clinical Perfusionist</div><div style="font-size:11.5px;color:#5B6B78">Tanzania Perfusion Society · 2019</div></div></div>
+          <div style="display:flex;gap:12px;padding:10px 0;align-items:center"><span style="width:30px;height:30px;flex:none;border-radius:6px;background:#E6EFF7;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:#0F5499">ELS</span><div><div style="font-size:13.5px;font-weight:600">ELSO ECMO Specialist Course</div><div style="font-size:11.5px;color:#5B6B78">ELSO · 2023</div></div></div>
+        </div>
+        <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:24px 26px">
+          <div style="font-size:15.5px;font-weight:700;margin-bottom:14px">Profiles &amp; links</div>
+          <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #EDF1F5;font-size:13.5px"><span style="color:#5B6B78;font-weight:500">ORCID</span><span style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:#0F5499">0000-0002-8841-19X</span></div>
+          <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #EDF1F5;font-size:13.5px"><span style="color:#5B6B78;font-weight:500">Google Scholar</span><span style="color:#0F5499;font-weight:600">View profile →</span></div>
+          <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #EDF1F5;font-size:13.5px"><span style="color:#5B6B78;font-weight:500">ResearchGate</span><span style="color:#0F5499;font-weight:600">View profile →</span></div>
+          <div style="display:flex;justify-content:space-between;padding:9px 0;font-size:13.5px"><span style="color:#5B6B78;font-weight:500">LinkedIn</span><span style="color:#0F5499;font-weight:600">View profile →</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div></div>
+
+<!-- ============ 1d RESEARCH REPOSITORY ============ -->
+<div class="dv-opt" id="1d"><div class="dv-olabel"><a class="dv-oid" href="#1d">1d</a><span>Research repository — content area (global sidebar as in <a class="dv-oid" href="#1b">1b</a>)</span></div>
+<div class="dv-card" style="width:1208px;background:#F4F7F9" data-screen-label="Research repository">
+
+  <div style="display:flex;align-items:center;justify-content:space-between;background:#fff;border-bottom:1px solid #DCE4EA;padding:16px 32px">
+    <div style="font-size:19px;font-weight:700">Research repository</div>
+    <div style="display:flex;gap:12px">
+      <div style="font-size:13.5px;font-weight:600;color:#0F5499;border:1px solid #0F5499;padding:9px 18px;border-radius:6px">Citation export</div>
+      <div style="font-size:13.5px;font-weight:600;color:#fff;background:#1F8A5B;padding:9px 18px;border-radius:6px">+ Upload research</div>
+    </div>
+  </div>
+
+  <div style="padding:24px 32px 36px">
+    <div style="display:flex;gap:12px;margin-bottom:20px">
+      <div style="flex:1;display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #DCE4EA;border-radius:6px;padding:11px 16px;font-size:14px;color:#5B6B78"><span style="width:12px;height:12px;border:1.5px solid #5B6B78;border-radius:50%;display:inline-block"></span><span>Search title, author, keywords, DOI…</span></div>
+      <div style="display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #DCE4EA;border-radius:6px;padding:11px 16px;font-size:13.5px;font-weight:600;color:#3D4F5E"><span>Type: All</span><span style="font-size:10px;color:#5B6B78">▾</span></div>
+      <div style="display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #DCE4EA;border-radius:6px;padding:11px 16px;font-size:13.5px;font-weight:600;color:#3D4F5E"><span>Year: 2020–2026</span><span style="font-size:10px;color:#5B6B78">▾</span></div>
+      <div style="display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #DCE4EA;border-radius:6px;padding:11px 16px;font-size:13.5px;font-weight:600;color:#3D4F5E"><span>Institution: All</span><span style="font-size:10px;color:#5B6B78">▾</span></div>
+    </div>
+
+    <div style="display:flex;gap:10px;margin-bottom:20px;font-size:12.5px;font-weight:600">
+      <span style="color:#fff;background:#0F5499;border-radius:99px;padding:6px 16px">All · 168</span>
+      <span style="color:#3D4F5E;background:#fff;border:1px solid #DCE4EA;border-radius:99px;padding:6px 16px">Thesis · 41</span>
+      <span style="color:#3D4F5E;background:#fff;border:1px solid #DCE4EA;border-radius:99px;padding:6px 16px">Papers · 63</span>
+      <span style="color:#3D4F5E;background:#fff;border:1px solid #DCE4EA;border-radius:99px;padding:6px 16px">Protocols · 27</span>
+      <span style="color:#3D4F5E;background:#fff;border:1px solid #DCE4EA;border-radius:99px;padding:6px 16px">Case reports · 22</span>
+      <span style="color:#3D4F5E;background:#fff;border:1px solid #DCE4EA;border-radius:99px;padding:6px 16px">Posters · 15</span>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:22px 26px;display:flex;gap:22px">
+        <div style="width:64px;height:82px;flex:none;background:#FBF6F5;border:1px solid #EBD4D0;border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:#C0392B">PDF</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#5B6B78">4.2 MB</span></div>
+        <div style="flex:1">
+          <div style="display:flex;gap:8px;margin-bottom:8px"><span style="font-size:11.5px;font-weight:600;color:#B7791F;background:#F3E9DC;padding:3px 10px;border-radius:99px">Research paper</span><span style="font-size:11.5px;font-weight:600;color:#1F8A5B;background:#E4F2EB;padding:3px 10px;border-radius:99px">Open access · CC BY 4.0</span></div>
+          <div style="font-size:17px;font-weight:600;line-height:1.4;margin-bottom:6px">Cardiopulmonary bypass complications and their predictors in open-heart surgery at a tertiary cardiac care facility in Tanzania</div>
+          <div style="font-size:13px;color:#5B6B78;margin-bottom:10px">Alfred Luvakule, Silas Gamba, Edwin Lugazia · MUHAS · Global Cardiology Science and Practice · 2026 · DOI 10.21542/gcsp.2026.11</div>
+          <div style="font-size:13.5px;line-height:1.55;color:#3D4F5E;margin-bottom:12px">Retrospective review of 195 open-heart patients at JKCI: at least one major complication in 31.3%, mortality 4.1%; CPB duration and cross-clamp time were significant predictors of complications and prolonged ICU stay.</div>
+          <div style="display:flex;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B78;border:1px solid #DCE4EA;border-radius:4px;padding:3px 8px">CPB complications</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B78;border:1px solid #DCE4EA;border-radius:4px;padding:3px 8px">open-heart surgery</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B78;border:1px solid #DCE4EA;border-radius:4px;padding:3px 8px">JKCI</span></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;justify-content:center;flex:none">
+          <div style="font-size:13px;font-weight:600;color:#fff;background:#0F5499;padding:8px 20px;border-radius:6px;text-align:center">Download</div>
+          <div style="font-size:13px;font-weight:600;color:#0F5499;border:1px solid #DCE4EA;padding:8px 20px;border-radius:6px;text-align:center">Preview</div>
+          <div style="font-size:13px;font-weight:600;color:#5B6B78;text-align:center">Cite · APA ▾</div>
+        </div>
+      </div>
+
+      <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:22px 26px;display:flex;gap:22px">
+        <div style="width:64px;height:82px;flex:none;background:#FBF6F5;border:1px solid #EBD4D0;border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:#C0392B">PDF</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#5B6B78">1.8 MB</span></div>
+        <div style="flex:1">
+          <div style="display:flex;gap:8px;margin-bottom:8px"><span style="font-size:11.5px;font-weight:600;color:#B7791F;background:#F3E9DC;padding:3px 10px;border-radius:99px">Research paper</span></div>
+          <div style="font-size:17px;font-weight:600;line-height:1.4;margin-bottom:6px">Retrospective review of ECMO outcomes in Tanzania, 2020–2025</div>
+          <div style="font-size:13px;color:#5B6B78;margin-bottom:10px">Joseph Mallya, Neema Kessy, Salma Lyimo · East African Medical Journal · 2025 · DOI 10.4314/eamj.2025.402</div>
+          <div style="font-size:13.5px;line-height:1.55;color:#3D4F5E;margin-bottom:12px">National multi-centre review of 62 ECMO runs across three referral hospitals, describing indications, complications and survival to discharge of 47%.</div>
+          <div style="display:flex;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B78;border:1px solid #DCE4EA;border-radius:4px;padding:3px 8px">ECMO</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B78;border:1px solid #DCE4EA;border-radius:4px;padding:3px 8px">outcomes</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B78;border:1px solid #DCE4EA;border-radius:4px;padding:3px 8px">registry</span></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;justify-content:center;flex:none">
+          <div style="font-size:13px;font-weight:600;color:#fff;background:#0F5499;padding:8px 20px;border-radius:6px;text-align:center">Download</div>
+          <div style="font-size:13px;font-weight:600;color:#0F5499;border:1px solid #DCE4EA;padding:8px 20px;border-radius:6px;text-align:center">Preview</div>
+          <div style="font-size:13px;font-weight:600;color:#5B6B78;text-align:center">Cite · APA ▾</div>
+        </div>
+      </div>
+
+      <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:22px 26px;display:flex;gap:22px">
+        <div style="width:64px;height:82px;flex:none;background:#FBF6F5;border:1px solid #EBD4D0;border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:#C0392B">PDF</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#5B6B78">0.9 MB</span></div>
+        <div style="flex:1">
+          <div style="display:flex;gap:8px;margin-bottom:8px"><span style="font-size:11.5px;font-weight:600;color:#1F8A5B;background:#E4F2EB;padding:3px 10px;border-radius:99px">Protocol</span></div>
+          <div style="font-size:17px;font-weight:600;line-height:1.4;margin-bottom:6px">Standard operating procedure: emergency circuit change-out during cardiopulmonary bypass</div>
+          <div style="font-size:13px;color:#5B6B78;margin-bottom:10px">JKCI Perfusion Unit · Version 3.1 · 2026</div>
+          <div style="display:flex;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B78;border:1px solid #DCE4EA;border-radius:4px;padding:3px 8px">SOP</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B78;border:1px solid #DCE4EA;border-radius:4px;padding:3px 8px">safety</span></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;justify-content:center;flex:none">
+          <div style="font-size:13px;font-weight:600;color:#fff;background:#0F5499;padding:8px 20px;border-radius:6px;text-align:center">Download</div>
+          <div style="font-size:13px;font-weight:600;color:#0F5499;border:1px solid #DCE4EA;padding:8px 20px;border-radius:6px;text-align:center">Preview</div>
+          <div style="font-size:13px;font-weight:600;color:#5B6B78;text-align:center">Cite · APA ▾</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:center;gap:6px;margin-top:24px;font-size:13px;font-weight:600">
+      <span style="width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;background:#0F5499;color:#fff;border-radius:6px">1</span>
+      <span style="width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;background:#fff;border:1px solid #DCE4EA;color:#3D4F5E;border-radius:6px">2</span>
+      <span style="width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;background:#fff;border:1px solid #DCE4EA;color:#3D4F5E;border-radius:6px">3</span>
+      <span style="width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;background:#fff;border:1px solid #DCE4EA;color:#3D4F5E;border-radius:6px">→</span>
+    </div>
+  </div>
+
+</div></div>
+
+<!-- ============ 1e DISCUSSION FORUM ============ -->
+<div class="dv-opt" id="1e"><div class="dv-olabel"><a class="dv-oid" href="#1e">1e</a><span>Discussion forum — content area (global sidebar as in <a class="dv-oid" href="#1b">1b</a>)</span></div>
+<div class="dv-card" style="width:1208px;background:#F4F7F9" data-screen-label="Discussion forum">
+
+  <div style="display:flex;align-items:center;justify-content:space-between;background:#fff;border-bottom:1px solid #DCE4EA;padding:16px 32px">
+    <div style="font-size:19px;font-weight:700">Discussion forum</div>
+    <div style="font-size:13.5px;font-weight:600;color:#fff;background:#1F8A5B;padding:9px 18px;border-radius:6px">+ New discussion</div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:250px 1fr;gap:22px;padding:24px 32px 36px">
+    <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:16px 0;align-self:start">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#5B6B78;padding:0 20px 10px">Categories</div>
+      <div style="display:flex;justify-content:space-between;padding:9px 20px;font-size:13.5px;font-weight:600;background:#E6EFF7;color:#0F5499;border-left:3px solid #0F5499"><span>Clinical Cases</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px">212</span></div>
+      <div style="display:flex;justify-content:space-between;padding:9px 20px;font-size:13.5px;font-weight:500;color:#3D4F5E;border-left:3px solid transparent"><span>ECMO</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#5B6B78">148</span></div>
+      <div style="display:flex;justify-content:space-between;padding:9px 20px;font-size:13.5px;font-weight:500;color:#3D4F5E;border-left:3px solid transparent"><span>Cardiopulmonary Bypass</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#5B6B78">305</span></div>
+      <div style="display:flex;justify-content:space-between;padding:9px 20px;font-size:13.5px;font-weight:500;color:#3D4F5E;border-left:3px solid transparent"><span>Perfusion Technology</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#5B6B78">96</span></div>
+      <div style="display:flex;justify-content:space-between;padding:9px 20px;font-size:13.5px;font-weight:500;color:#3D4F5E;border-left:3px solid transparent"><span>Research</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#5B6B78">74</span></div>
+      <div style="display:flex;justify-content:space-between;padding:9px 20px;font-size:13.5px;font-weight:500;color:#3D4F5E;border-left:3px solid transparent"><span>Equipment</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#5B6B78">58</span></div>
+      <div style="display:flex;justify-content:space-between;padding:9px 20px;font-size:13.5px;font-weight:500;color:#3D4F5E;border-left:3px solid transparent"><span>Education</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#5B6B78">83</span></div>
+      <div style="display:flex;justify-content:space-between;padding:9px 20px;font-size:13.5px;font-weight:500;color:#3D4F5E;border-left:3px solid transparent"><span>Jobs</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#5B6B78">31</span></div>
+      <div style="display:flex;justify-content:space-between;padding:9px 20px;font-size:13.5px;font-weight:500;color:#3D4F5E;border-left:3px solid transparent"><span>Students</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#5B6B78">119</span></div>
+      <div style="display:flex;justify-content:space-between;padding:9px 20px;font-size:13.5px;font-weight:500;color:#3D4F5E;border-left:3px solid transparent"><span>General Discussion</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#5B6B78">167</span></div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="background:#fff;border:1px solid #B9D3EA;border-radius:8px;padding:18px 24px;display:flex;gap:16px;align-items:flex-start">
+        <div style="width:38px;height:38px;flex:none;border-radius:50%;background:#E6EFF7;display:flex;align-items:center;justify-content:center;font-weight:700;color:#0F5499;font-size:13px">AL</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:5px"><span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#0F5499;background:#E6EFF7;border-radius:4px;padding:3px 8px">📌 Pinned</span><span style="font-size:11.5px;font-weight:600;color:#5B6B78">Clinical Cases</span></div>
+          <div style="font-size:16px;font-weight:600;line-height:1.4;margin-bottom:5px">Updated ACT monitoring protocol — comments welcome before national adoption</div>
+          <div style="font-size:12.5px;color:#5B6B78">Alfred Deo Luvakule · Moderator · 2 days ago</div>
+        </div>
+        <div style="display:flex;gap:20px;flex:none;text-align:center;padding-top:6px">
+          <div><div style="font-size:16px;font-weight:700;color:#0F5499">34</div><div style="font-size:11px;color:#5B6B78">replies</div></div>
+          <div><div style="font-size:16px;font-weight:700">61</div><div style="font-size:11px;color:#5B6B78">likes</div></div>
+        </div>
+      </div>
+
+      <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:18px 24px;display:flex;gap:16px;align-items:flex-start">
+        <div style="width:38px;height:38px;flex:none;border-radius:50%;background:#E4F2EB;display:flex;align-items:center;justify-content:center;font-weight:700;color:#1F8A5B;font-size:13px">AM</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:5px"><span style="font-size:11.5px;font-weight:600;color:#5B6B78">Cardiopulmonary Bypass</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B78;border:1px solid #DCE4EA;border-radius:4px;padding:2px 7px">cardioplegia</span></div>
+          <div style="font-size:16px;font-weight:600;line-height:1.4;margin-bottom:5px">Del Nido vs blood cardioplegia in adults — what is your centre's practice?</div>
+          <div style="font-size:12.5px;color:#5B6B78">Dkt. Amani Mwakyusa · JKCI · 5 hrs ago · last reply by Neema Kessy, 24 min ago</div>
+        </div>
+        <div style="display:flex;gap:20px;flex:none;text-align:center;padding-top:6px">
+          <div><div style="font-size:16px;font-weight:700;color:#0F5499">18</div><div style="font-size:11px;color:#5B6B78">replies</div></div>
+          <div><div style="font-size:16px;font-weight:700">27</div><div style="font-size:11px;color:#5B6B78">likes</div></div>
+        </div>
+      </div>
+
+      <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:18px 24px;display:flex;gap:16px;align-items:flex-start">
+        <div style="width:38px;height:38px;flex:none;border-radius:50%;background:#F3E9DC;display:flex;align-items:center;justify-content:center;font-weight:700;color:#B7791F;font-size:13px">SL</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:5px"><span style="font-size:11.5px;font-weight:600;color:#5B6B78">Students</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B78;border:1px solid #DCE4EA;border-radius:4px;padding:2px 7px">neonatal</span></div>
+          <div style="font-size:16px;font-weight:600;line-height:1.4;margin-bottom:5px">Priming volume reduction for &lt;5kg neonates — practical tips from your first cases?</div>
+          <div style="font-size:12.5px;color:#5B6B78">Salma Lyimo · Student, MUHAS · yesterday</div>
+        </div>
+        <div style="display:flex;gap:20px;flex:none;text-align:center;padding-top:6px">
+          <div><div style="font-size:16px;font-weight:700;color:#0F5499">12</div><div style="font-size:11px;color:#5B6B78">replies</div></div>
+          <div><div style="font-size:16px;font-weight:700">19</div><div style="font-size:11px;color:#5B6B78">likes</div></div>
+        </div>
+      </div>
+
+      <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:18px 24px;display:flex;gap:16px;align-items:flex-start">
+        <div style="width:38px;height:38px;flex:none;border-radius:50%;background:#E6EFF7;display:flex;align-items:center;justify-content:center;font-weight:700;color:#0F5499;font-size:13px">JM</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:5px"><span style="font-size:11.5px;font-weight:600;color:#5B6B78">ECMO</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B78;border:1px solid #DCE4EA;border-radius:4px;padding:2px 7px">weaning</span></div>
+          <div style="font-size:16px;font-weight:600;line-height:1.4;margin-bottom:5px">VA-ECMO weaning criteria — echo parameters you rely on before decannulation</div>
+          <div style="font-size:12.5px;color:#5B6B78">Dkt. Joseph Mallya · Bugando MC · 2 days ago</div>
+        </div>
+        <div style="display:flex;gap:20px;flex:none;text-align:center;padding-top:6px">
+          <div><div style="font-size:16px;font-weight:700;color:#0F5499">9</div><div style="font-size:11px;color:#5B6B78">replies</div></div>
+          <div><div style="font-size:16px;font-weight:700">14</div><div style="font-size:11px;color:#5B6B78">likes</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div></div>
+
+<!-- ============ 1f JOB BOARD ============ -->
+<div class="dv-opt" id="1f"><div class="dv-olabel"><a class="dv-oid" href="#1f">1f</a><span>Job board — content area (global sidebar as in <a class="dv-oid" href="#1b">1b</a>)</span></div>
+<div class="dv-card" style="width:1208px;background:#F4F7F9" data-screen-label="Job board">
+
+  <div style="display:flex;align-items:center;justify-content:space-between;background:#fff;border-bottom:1px solid #DCE4EA;padding:16px 32px">
+    <div style="font-size:19px;font-weight:700">Jobs &amp; opportunities</div>
+    <div style="font-size:13.5px;font-weight:600;color:#fff;background:#1F8A5B;padding:9px 18px;border-radius:6px">+ Post a job</div>
+  </div>
+
+  <div style="padding:24px 32px 36px">
+    <div style="display:flex;gap:12px;margin-bottom:22px">
+      <div style="display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #DCE4EA;border-radius:6px;padding:11px 16px;font-size:13.5px;font-weight:600;color:#3D4F5E"><span>Region: All Tanzania</span><span style="font-size:10px;color:#5B6B78">▾</span></div>
+      <div style="display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #DCE4EA;border-radius:6px;padding:11px 16px;font-size:13.5px;font-weight:600;color:#3D4F5E"><span>Hospital: All</span><span style="font-size:10px;color:#5B6B78">▾</span></div>
+      <div style="display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #DCE4EA;border-radius:6px;padding:11px 16px;font-size:13.5px;font-weight:600;color:#3D4F5E"><span>Experience: Any</span><span style="font-size:10px;color:#5B6B78">▾</span></div>
+      <div style="display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #DCE4EA;border-radius:6px;padding:11px 16px;font-size:13.5px;font-weight:600;color:#3D4F5E"><span>Type: Permanent + Locum</span><span style="font-size:10px;color:#5B6B78">▾</span></div>
+      <div style="margin-left:auto;font-size:13px;color:#5B6B78;align-self:center">14 open positions</div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:22px 26px;display:flex;gap:20px;align-items:center">
+        <div style="width:52px;height:52px;flex:none;border-radius:8px;background:#E6EFF7;display:flex;align-items:center;justify-content:center;font-weight:700;color:#0F5499;font-size:15px">AK</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:5px"><span style="font-size:16.5px;font-weight:600">Senior Clinical Perfusionist</span><span style="font-size:11.5px;font-weight:600;color:#1F8A5B;background:#E4F2EB;border-radius:99px;padding:3px 10px">Permanent</span></div>
+          <div style="font-size:13px;color:#5B6B78">Aga Khan Hospital · Dar es Salaam · 5+ years experience · Adult &amp; paediatric CPB, ECMO</div>
+        </div>
+        <div style="text-align:right;flex:none;display:flex;flex-direction:column;gap:8px;align-items:flex-end">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#C0392B">Deadline: 31 Jul 2026</div>
+          <div style="font-size:13.5px;font-weight:600;color:#fff;background:#0F5499;padding:8px 22px;border-radius:6px">Apply</div>
+        </div>
+      </div>
+
+      <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:22px 26px;display:flex;gap:20px;align-items:center">
+        <div style="width:52px;height:52px;flex:none;border-radius:8px;background:#E4F2EB;display:flex;align-items:center;justify-content:center;font-weight:700;color:#1F8A5B;font-size:15px">BM</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:5px"><span style="font-size:16.5px;font-weight:600">Perfusionist — ECMO Programme</span><span style="font-size:11.5px;font-weight:600;color:#1F8A5B;background:#E4F2EB;border-radius:99px;padding:3px 10px">Permanent</span></div>
+          <div style="font-size:13px;color:#5B6B78">Bugando Medical Centre · Mwanza · 2+ years experience · ELSO course an advantage</div>
+        </div>
+        <div style="text-align:right;flex:none;display:flex;flex-direction:column;gap:8px;align-items:flex-end">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5B6B78">Deadline: 22 Aug 2026</div>
+          <div style="font-size:13.5px;font-weight:600;color:#fff;background:#0F5499;padding:8px 22px;border-radius:6px">Apply</div>
+        </div>
+      </div>
+
+      <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:22px 26px;display:flex;gap:20px;align-items:center">
+        <div style="width:52px;height:52px;flex:none;border-radius:8px;background:#F3E9DC;display:flex;align-items:center;justify-content:center;font-weight:700;color:#B7791F;font-size:15px">KC</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:5px"><span style="font-size:16.5px;font-weight:600">Locum Perfusionist — Cardiac Camp</span><span style="font-size:11.5px;font-weight:600;color:#B7791F;background:#F3E9DC;border-radius:99px;padding:3px 10px">Locum · 3 weeks</span></div>
+          <div style="font-size:13px;color:#5B6B78">KCMC · Kilimanjaro · Any experience · Visiting surgical mission, October 2026</div>
+        </div>
+        <div style="text-align:right;flex:none;display:flex;flex-direction:column;gap:8px;align-items:flex-end">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5B6B78">Deadline: 15 Sep 2026</div>
+          <div style="font-size:13.5px;font-weight:600;color:#fff;background:#0F5499;padding:8px 22px;border-radius:6px">Apply</div>
+        </div>
+      </div>
+
+      <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:22px 26px;display:flex;gap:20px;align-items:center">
+        <div style="width:52px;height:52px;flex:none;border-radius:8px;background:#E6EFF7;display:flex;align-items:center;justify-content:center;font-weight:700;color:#0F5499;font-size:15px">JK</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:5px"><span style="font-size:16.5px;font-weight:600">Perfusion Internship (6 months)</span><span style="font-size:11.5px;font-weight:600;color:#0F5499;background:#E6EFF7;border-radius:99px;padding:3px 10px">Internship</span></div>
+          <div style="font-size:13px;color:#5B6B78">Jakaya Kikwete Cardiac Institute · Dar es Salaam · Final-year perfusion students</div>
+        </div>
+        <div style="text-align:right;flex:none;display:flex;flex-direction:column;gap:8px;align-items:flex-end">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5B6B78">Deadline: 30 Sep 2026</div>
+          <div style="font-size:13.5px;font-weight:600;color:#fff;background:#0F5499;padding:8px 22px;border-radius:6px">Apply</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div></div>
+
+<!-- ============ 1g EVENTS ============ -->
+<div class="dv-opt" id="1g"><div class="dv-olabel"><a class="dv-oid" href="#1g">1g</a><span>Events &amp; CPD — content area (global sidebar as in <a class="dv-oid" href="#1b">1b</a>)</span></div>
+<div class="dv-card" style="width:1208px;background:#F4F7F9" data-screen-label="Events">
+
+  <div style="display:flex;align-items:center;justify-content:space-between;background:#fff;border-bottom:1px solid #DCE4EA;padding:16px 32px">
+    <div style="font-size:19px;font-weight:700">Events</div>
+    <div style="display:flex;gap:10px;align-items:center">
+      <div style="display:flex;border:1px solid #DCE4EA;border-radius:6px;overflow:hidden;font-size:13px;font-weight:600"><span style="padding:8px 16px;background:#0F5499;color:#fff">List</span><span style="padding:8px 16px;color:#3D4F5E;background:#fff">Calendar</span></div>
+      <div style="font-size:13.5px;font-weight:600;color:#0F5499;border:1px solid #0F5499;padding:8px 16px;border-radius:6px">Sync to Google Calendar</div>
+    </div>
+  </div>
+
+  <div style="padding:24px 32px 36px">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#5B6B78;margin-bottom:14px">August 2026</div>
+    <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:24px 28px;display:flex;gap:24px;margin-bottom:14px">
+      <div style="text-align:center;background:#E6EFF7;border-radius:8px;padding:14px 18px;min-width:72px;align-self:flex-start"><div style="font-size:28px;font-weight:700;color:#0F5499">14</div><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#0F5499">AUG</div></div>
+      <div style="flex:1">
+        <div style="display:flex;gap:8px;margin-bottom:8px"><span style="font-size:11.5px;font-weight:600;color:#0F5499;background:#E6EFF7;border-radius:99px;padding:3px 10px">Conference</span><span style="font-size:11.5px;font-weight:600;color:#1F8A5B;background:#E4F2EB;border-radius:99px;padding:3px 10px">18 CPD points</span></div>
+        <div style="font-size:18px;font-weight:600;margin-bottom:6px">Tanzania Perfusion Society Annual Conference 2026</div>
+        <div style="font-size:13.5px;color:#5B6B78;line-height:1.55;margin-bottom:12px">Julius Nyerere Convention Centre, Dar es Salaam · 14–16 August · Keynote: national perfusion registry launch. Abstract submission closes 20 July.</div>
+        <div style="display:flex;gap:16px;font-size:13px;color:#5B6B78"><span><b style="color:#12212E">86</b> registered</span><span><b style="color:#12212E">24</b> abstracts submitted</span></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;align-self:center;flex:none">
+        <div style="font-size:13.5px;font-weight:600;color:#fff;background:#0F5499;padding:9px 24px;border-radius:6px;text-align:center">Register</div>
+        <div style="font-size:13.5px;font-weight:600;color:#0F5499;border:1px solid #DCE4EA;padding:9px 24px;border-radius:6px;text-align:center">Submit abstract</div>
+      </div>
+    </div>
+
+    <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:24px 28px;display:flex;gap:24px;margin-bottom:26px">
+      <div style="text-align:center;background:#E6EFF7;border-radius:8px;padding:14px 18px;min-width:72px;align-self:flex-start"><div style="font-size:28px;font-weight:700;color:#0F5499">27</div><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#0F5499">AUG</div></div>
+      <div style="flex:1">
+        <div style="display:flex;gap:8px;margin-bottom:8px"><span style="font-size:11.5px;font-weight:600;color:#B7791F;background:#F3E9DC;border-radius:99px;padding:3px 10px">Webinar</span><span style="font-size:11.5px;font-weight:600;color:#1F8A5B;background:#E4F2EB;border-radius:99px;padding:3px 10px">2 CPD points</span></div>
+        <div style="font-size:18px;font-weight:600;margin-bottom:6px">Myocardial protection strategies — evidence update</div>
+        <div style="font-size:13.5px;color:#5B6B78;line-height:1.55">Online · 19:00–20:30 EAT · Speaker: Dkt. Joseph Mallya · Live Q&amp;A and quiz for CPD credit.</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;align-self:center;flex:none">
+        <div style="font-size:13.5px;font-weight:600;color:#fff;background:#0F5499;padding:9px 24px;border-radius:6px;text-align:center">Register</div>
+      </div>
+    </div>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#5B6B78;margin-bottom:14px">September 2026</div>
+    <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:24px 28px;display:flex;gap:24px">
+      <div style="text-align:center;background:#E4F2EB;border-radius:8px;padding:14px 18px;min-width:72px;align-self:flex-start"><div style="font-size:28px;font-weight:700;color:#1F8A5B">05</div><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#1F8A5B">SEP</div></div>
+      <div style="flex:1">
+        <div style="display:flex;gap:8px;margin-bottom:8px"><span style="font-size:11.5px;font-weight:600;color:#1F8A5B;background:#E4F2EB;border-radius:99px;padding:3px 10px">Workshop</span><span style="font-size:11.5px;font-weight:600;color:#1F8A5B;background:#E4F2EB;border-radius:99px;padding:3px 10px">12 CPD points</span></div>
+        <div style="font-size:18px;font-weight:600;margin-bottom:6px">ECMO Simulation Workshop — East Africa</div>
+        <div style="font-size:13.5px;color:#5B6B78;line-height:1.55">Bugando Medical Centre, Mwanza · 5–6 September · Hands-on circuit setup, emergencies and weaning · Limited to 30 participants.</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;align-self:center;flex:none">
+        <div style="font-size:13.5px;font-weight:600;color:#fff;background:#0F5499;padding:9px 24px;border-radius:6px;text-align:center">Register</div>
+      </div>
+    </div>
+  </div>
+
+</div></div>
+
+<!-- ============ 1h HOSPITAL DIRECTORY ============ -->
+<div class="dv-opt" id="1h"><div class="dv-olabel"><a class="dv-oid" href="#1h">1h</a><span>Hospital directory — content area (global sidebar as in <a class="dv-oid" href="#1b">1b</a>)</span></div>
+<div class="dv-card" style="width:1208px;background:#F4F7F9" data-screen-label="Hospital directory">
+
+  <div style="display:flex;align-items:center;justify-content:space-between;background:#fff;border-bottom:1px solid #DCE4EA;padding:16px 32px">
+    <div style="font-size:19px;font-weight:700">Hospital directory</div>
+    <div style="display:flex;align-items:center;gap:8px;background:#F4F7F9;border:1px solid #DCE4EA;border-radius:6px;padding:9px 16px;font-size:13.5px;font-weight:600;color:#3D4F5E"><span>Service: All</span><span style="font-size:10px;color:#5B6B78">▾</span></div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 420px;gap:22px;padding:24px 32px 36px">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:22px 26px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px"><span style="font-size:16.5px;font-weight:600">Jakaya Kikwete Cardiac Institute (JKCI)</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;color:#1F8A5B;background:#E4F2EB;border-radius:99px;padding:3px 10px"><span style="width:6px;height:6px;border-radius:50%;background:#1F8A5B"></span><span>Verified</span></span></div>
+        <div style="font-size:13px;color:#5B6B78;margin-bottom:14px">Dar es Salaam · National referral cardiac centre · +255 22 215 1367</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px">
+          <span style="font-size:12px;font-weight:600;color:#0F5499;background:#E6EFF7;border-radius:99px;padding:5px 12px">Cardiac surgery</span>
+          <span style="font-size:12px;font-weight:600;color:#0F5499;background:#E6EFF7;border-radius:99px;padding:5px 12px">ECMO</span>
+          <span style="font-size:12px;font-weight:600;color:#0F5499;background:#E6EFF7;border-radius:99px;padding:5px 12px">Cath lab</span>
+          <span style="font-size:12px;font-weight:600;color:#0F5499;background:#E6EFF7;border-radius:99px;padding:5px 12px">Perfusion services</span>
+        </div>
+        <div style="display:flex;gap:20px;font-size:13px;color:#5B6B78"><span><b style="color:#12212E">14</b> perfusionists</span><span><b style="color:#12212E">3</b> heart-lung machines</span><span><b style="color:#12212E">2</b> ECMO circuits</span></div>
+      </div>
+
+      <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:22px 26px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px"><span style="font-size:16.5px;font-weight:600">Bugando Medical Centre</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;color:#1F8A5B;background:#E4F2EB;border-radius:99px;padding:3px 10px"><span style="width:6px;height:6px;border-radius:50%;background:#1F8A5B"></span><span>Verified</span></span></div>
+        <div style="font-size:13px;color:#5B6B78;margin-bottom:14px">Mwanza · Zonal referral hospital, Lake Zone · +255 28 250 0513</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px">
+          <span style="font-size:12px;font-weight:600;color:#0F5499;background:#E6EFF7;border-radius:99px;padding:5px 12px">Cardiac surgery</span>
+          <span style="font-size:12px;font-weight:600;color:#0F5499;background:#E6EFF7;border-radius:99px;padding:5px 12px">ECMO</span>
+          <span style="font-size:12px;font-weight:600;color:#0F5499;background:#E6EFF7;border-radius:99px;padding:5px 12px">Perfusion services</span>
+        </div>
+        <div style="display:flex;gap:20px;font-size:13px;color:#5B6B78"><span><b style="color:#12212E">6</b> perfusionists</span><span><b style="color:#12212E">2</b> heart-lung machines</span><span><b style="color:#12212E">1</b> ECMO circuit</span></div>
+      </div>
+
+      <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:22px 26px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px"><span style="font-size:16.5px;font-weight:600">KCMC — Kilimanjaro Christian Medical Centre</span></div>
+        <div style="font-size:13px;color:#5B6B78;margin-bottom:14px">Moshi, Kilimanjaro · Zonal referral hospital · +255 27 275 4377</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px">
+          <span style="font-size:12px;font-weight:600;color:#0F5499;background:#E6EFF7;border-radius:99px;padding:5px 12px">Cath lab</span>
+          <span style="font-size:12px;font-weight:600;color:#0F5499;background:#E6EFF7;border-radius:99px;padding:5px 12px">Visiting cardiac missions</span>
+        </div>
+        <div style="display:flex;gap:20px;font-size:13px;color:#5B6B78"><span><b style="color:#12212E">3</b> perfusionists</span><span><b style="color:#12212E">1</b> heart-lung machine</span></div>
+      </div>
+    </div>
+
+    <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;overflow:hidden;align-self:start">
+      <div style="height:420px;background:repeating-linear-gradient(45deg,#E6EFF7,#E6EFF7 14px,#EFF5FA 14px,#EFF5FA 28px);display:flex;align-items:center;justify-content:center;position:relative">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B78;background:#fff;padding:8px 14px;border-radius:4px;border:1px solid #DCE4EA">Google Map — Tanzania, 37 facility pins</div>
+        <div style="position:absolute;top:58%;left:72%;width:14px;height:14px;border-radius:50%;background:#0F5499;border:3px solid #fff;box-shadow:0 1px 4px rgba(10,46,78,.4)"></div>
+        <div style="position:absolute;top:26%;left:38%;width:14px;height:14px;border-radius:50%;background:#1F8A5B;border:3px solid #fff;box-shadow:0 1px 4px rgba(10,46,78,.4)"></div>
+        <div style="position:absolute;top:32%;left:62%;width:14px;height:14px;border-radius:50%;background:#0F5499;border:3px solid #fff;box-shadow:0 1px 4px rgba(10,46,78,.4)"></div>
+      </div>
+      <div style="padding:18px 22px;display:flex;gap:18px;font-size:12.5px;color:#5B6B78">
+        <span style="display:inline-flex;align-items:center;gap:7px"><span style="width:10px;height:10px;border-radius:50%;background:#0F5499"></span><span>Cardiac surgery</span></span>
+        <span style="display:inline-flex;align-items:center;gap:7px"><span style="width:10px;height:10px;border-radius:50%;background:#1F8A5B"></span><span>ECMO capable</span></span>
+      </div>
+    </div>
+  </div>
+
+</div></div>
+
+<!-- ============ 1i CLINICAL CALCULATORS ============ -->
+<div class="dv-opt" id="1i"><div class="dv-olabel"><a class="dv-oid" href="#1i">1i</a><span>Clinical calculators — content area (global sidebar as in <a class="dv-oid" href="#1b">1b</a>)</span></div>
+<div class="dv-card" style="width:1208px;background:#F4F7F9" data-screen-label="Clinical calculators">
+
+  <div style="display:flex;align-items:center;justify-content:space-between;background:#fff;border-bottom:1px solid #DCE4EA;padding:16px 32px">
+    <div style="font-size:19px;font-weight:700">Clinical calculators</div>
+    <div style="font-size:12.5px;color:#5B6B78">For clinical decision support only — verify against local protocols</div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:340px 1fr;gap:22px;padding:24px 32px 36px">
+    <div style="display:grid;grid-template-columns:1fr;gap:10px;align-self:start">
+      <div style="background:#0F5499;color:#fff;border-radius:8px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:14.5px;font-weight:600">Flow rate &amp; BSA</div><div style="font-size:12px;color:#B9D3EA;margin-top:2px">Cardiac index → pump flow</div></div><span style="font-size:14px">→</span></div>
+      <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:16px 20px"><div style="font-size:14.5px;font-weight:600">Heparin dose</div><div style="font-size:12px;color:#5B6B78;margin-top:2px">Loading + maintenance</div></div>
+      <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:16px 20px"><div style="font-size:14.5px;font-weight:600">Cardioplegia</div><div style="font-size:12px;color:#5B6B78;margin-top:2px">Dose &amp; re-dose intervals</div></div>
+      <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:16px 20px"><div style="font-size:14.5px;font-weight:600">Hemodilution</div><div style="font-size:12px;color:#5B6B78;margin-top:2px">Predicted on-bypass Hct</div></div>
+      <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:16px 20px"><div style="font-size:14.5px;font-weight:600">Blood volume</div><div style="font-size:12px;color:#5B6B78;margin-top:2px">By age &amp; weight</div></div>
+      <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:16px 20px"><div style="font-size:14.5px;font-weight:600">Oxygen delivery (DO₂)</div><div style="font-size:12px;color:#5B6B78;margin-top:2px">Goal-directed perfusion</div></div>
+    </div>
+
+    <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:28px 32px;align-self:start">
+      <div style="font-size:18px;font-weight:700;margin-bottom:4px">Flow rate &amp; body surface area</div>
+      <div style="font-size:13px;color:#5B6B78;margin-bottom:24px">BSA (Du Bois) = 0.007184 × height⁰·⁷²⁵ × weight⁰·⁴²⁵ · Flow = BSA × cardiac index</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px">
+        <div><div style="font-size:12.5px;font-weight:600;color:#5B6B78;margin-bottom:7px">Height (cm)</div><div style="border:1px solid #DCE4EA;border-radius:6px;padding:11px 14px;font-size:15px;font-weight:600;background:#F4F7F9">164</div></div>
+        <div><div style="font-size:12.5px;font-weight:600;color:#5B6B78;margin-bottom:7px">Weight (kg)</div><div style="border:1px solid #DCE4EA;border-radius:6px;padding:11px 14px;font-size:15px;font-weight:600;background:#F4F7F9">58</div></div>
+        <div><div style="font-size:12.5px;font-weight:600;color:#5B6B78;margin-bottom:7px">Cardiac index (L/min/m²)</div><div style="border:1px solid #DCE4EA;border-radius:6px;padding:11px 14px;font-size:15px;font-weight:600;background:#F4F7F9">2.4</div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px">
+        <div style="background:#E6EFF7;border-radius:8px;padding:20px 24px"><div style="font-size:12.5px;font-weight:600;color:#0F5499;margin-bottom:6px">Body surface area</div><div style="font-size:30px;font-weight:700;color:#0A2E4E">1.62 <span style="font-size:15px;font-weight:600">m²</span></div></div>
+        <div style="background:#E4F2EB;border-radius:8px;padding:20px 24px"><div style="font-size:12.5px;font-weight:600;color:#1F8A5B;margin-bottom:6px">Target pump flow</div><div style="font-size:30px;font-weight:700;color:#14563B">3.89 <span style="font-size:15px;font-weight:600">L/min</span></div></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid #EDF1F5;padding-top:18px">
+        <div style="font-size:12.5px;color:#5B6B78">Range at CI 1.8–3.0: <b style="color:#12212E">2.92 – 4.86 L/min</b></div>
+        <div style="display:flex;gap:10px"><div style="font-size:13px;font-weight:600;color:#0F5499;border:1px solid #DCE4EA;padding:8px 18px;border-radius:6px">Save to case log</div><div style="font-size:13px;font-weight:600;color:#fff;background:#0F5499;padding:8px 18px;border-radius:6px">Calculate</div></div>
+      </div>
+    </div>
+  </div>
+
+</div></div>
+
+<!-- ============ 1j MESSAGING ============ -->
+<div class="dv-opt" id="1j"><div class="dv-olabel"><a class="dv-oid" href="#1j">1j</a><span>Messaging — content area (global sidebar as in <a class="dv-oid" href="#1b">1b</a>)</span></div>
+<div class="dv-card" style="width:1208px;background:#fff;display:flex;height:640px" data-screen-label="Messaging">
+
+  <div style="width:340px;flex:none;border-right:1px solid #DCE4EA;display:flex;flex-direction:column">
+    <div style="padding:18px 22px;border-bottom:1px solid #DCE4EA"><div style="font-size:17px;font-weight:700;margin-bottom:12px">Messages</div><div style="display:flex;align-items:center;gap:9px;background:#F4F7F9;border:1px solid #DCE4EA;border-radius:6px;padding:8px 13px;font-size:13px;color:#5B6B78"><span style="width:11px;height:11px;border:1.5px solid #5B6B78;border-radius:50%;display:inline-block"></span><span>Search conversations</span></div></div>
+    <div style="display:flex;gap:13px;padding:15px 22px;background:#E6EFF7;border-left:3px solid #0F5499;align-items:center">
+      <div style="position:relative;flex:none"><div style="width:42px;height:42px;border-radius:50%;background:#E4F2EB;display:flex;align-items:center;justify-content:center;font-weight:700;color:#1F8A5B;font-size:14px">NK</div><span style="position:absolute;bottom:0;right:0;width:11px;height:11px;border-radius:50%;background:#1F8A5B;border:2px solid #fff"></span></div>
+      <div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between"><span style="font-size:14px;font-weight:700">Neema Kessy</span><span style="font-size:11px;color:#5B6B78">14:22</span></div><div style="font-size:12.5px;color:#3D4F5E;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px">Sending the circuit diagram now…</div></div>
+      <span style="width:18px;height:18px;flex:none;border-radius:50%;background:#0F5499;color:#fff;font-size:10.5px;font-weight:700;display:inline-flex;align-items:center;justify-content:center">2</span>
+    </div>
+    <div style="display:flex;gap:13px;padding:15px 22px;border-left:3px solid transparent;align-items:center;border-bottom:1px solid #F0F3F6">
+      <div style="position:relative;flex:none"><div style="width:42px;height:42px;border-radius:50%;background:#E6EFF7;display:flex;align-items:center;justify-content:center;font-weight:700;color:#0F5499;font-size:14px">JM</div><span style="position:absolute;bottom:0;right:0;width:11px;height:11px;border-radius:50%;background:#B0BEC9;border:2px solid #fff"></span></div>
+      <div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between"><span style="font-size:14px;font-weight:600">Dkt. Joseph Mallya</span><span style="font-size:11px;color:#5B6B78">Thu</span></div><div style="font-size:12.5px;color:#5B6B78;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px">Asante — see you at the workshop</div></div>
+    </div>
+    <div style="display:flex;gap:13px;padding:15px 22px;border-left:3px solid transparent;align-items:center">
+      <div style="position:relative;flex:none"><div style="width:42px;height:42px;border-radius:50%;background:#F3E9DC;display:flex;align-items:center;justify-content:center;font-weight:700;color:#B7791F;font-size:14px">SL</div><span style="position:absolute;bottom:0;right:0;width:11px;height:11px;border-radius:50%;background:#1F8A5B;border:2px solid #fff"></span></div>
+      <div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between"><span style="font-size:14px;font-weight:600">Salma Lyimo</span><span style="font-size:11px;color:#5B6B78">Wed</span></div><div style="font-size:12.5px;color:#5B6B78;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px">Thank you for the mentorship session!</div></div>
+    </div>
+  </div>
+
+  <div style="flex:1;display:flex;flex-direction:column;background:#F8FAFB">
+    <div style="display:flex;align-items:center;gap:13px;padding:14px 26px;background:#fff;border-bottom:1px solid #DCE4EA">
+      <div style="width:38px;height:38px;border-radius:50%;background:#E4F2EB;display:flex;align-items:center;justify-content:center;font-weight:700;color:#1F8A5B;font-size:13px">NK</div>
+      <div><div style="font-size:14.5px;font-weight:700">Neema Kessy</div><div style="display:flex;align-items:center;gap:6px;font-size:11.5px;color:#1F8A5B"><span style="width:7px;height:7px;border-radius:50%;background:#1F8A5B"></span><span>Online</span></div></div>
+    </div>
+    <div style="flex:1;padding:24px 26px;display:flex;flex-direction:column;gap:14px">
+      <div style="align-self:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B78;background:#EDF1F5;border-radius:99px;padding:4px 14px">Today · 11 July</div>
+      <div style="align-self:flex-start;max-width:62%"><div style="background:#fff;border:1px solid #DCE4EA;border-radius:12px 12px 12px 4px;padding:12px 16px;font-size:14px;line-height:1.55">Habari Amani — did you manage to review the mini-circuit priming figures for tomorrow's case?</div><div style="font-size:11px;color:#5B6B78;margin-top:5px">14:18</div></div>
+      <div style="align-self:flex-end;max-width:62%"><div style="background:#0F5499;color:#fff;border-radius:12px 12px 4px 12px;padding:12px 16px;font-size:14px;line-height:1.55">Ndiyo — I suggest we drop the prime to 950 ml and add retrograde autologous priming. I'll bring the checklist.</div><div style="font-size:11px;color:#5B6B78;margin-top:5px;text-align:right">14:20 · Read</div></div>
+      <div style="align-self:flex-start;max-width:62%"><div style="background:#fff;border:1px solid #DCE4EA;border-radius:12px 12px 12px 4px;padding:12px 16px;font-size:14px;line-height:1.55">Perfect. Sending the circuit diagram now…</div><div style="font-size:11px;color:#5B6B78;margin-top:5px">14:22</div></div>
+      <div style="align-self:flex-start;max-width:62%"><div style="background:#fff;border:1px solid #DCE4EA;border-radius:12px;padding:13px 16px;display:flex;align-items:center;gap:12px"><span style="width:36px;height:44px;flex:none;background:#FBF6F5;border:1px solid #EBD4D0;border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:#C0392B">PDF</span><div><div style="font-size:13px;font-weight:600">paeds-mini-circuit-v4.pdf</div><div style="font-size:11.5px;color:#5B6B78">1.1 MB · Tap to download</div></div></div></div>
+      <div style="align-self:flex-start;display:flex;align-items:center;gap:8px;font-size:12px;color:#5B6B78"><span style="display:inline-flex;gap:3px"><span style="width:6px;height:6px;border-radius:50%;background:#B0BEC9"></span><span style="width:6px;height:6px;border-radius:50%;background:#B0BEC9"></span><span style="width:6px;height:6px;border-radius:50%;background:#B0BEC9"></span></span><span>Neema is typing…</span></div>
+    </div>
+    <div style="display:flex;gap:12px;padding:16px 26px;background:#fff;border-top:1px solid #DCE4EA;align-items:center">
+      <div style="width:34px;height:34px;flex:none;border:1px solid #DCE4EA;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:16px;color:#5B6B78">+</div>
+      <div style="flex:1;background:#F4F7F9;border:1px solid #DCE4EA;border-radius:99px;padding:11px 18px;font-size:14px;color:#5B6B78">Andika ujumbe… (write a message)</div>
+      <div style="font-size:13.5px;font-weight:600;color:#fff;background:#0F5499;padding:10px 22px;border-radius:99px">Send</div>
+    </div>
+  </div>
+
+</div></div>
+
+<!-- ============ 1k ADMIN PANEL ============ -->
+<div class="dv-opt" id="1k"><div class="dv-olabel"><a class="dv-oid" href="#1k">1k</a><span>Admin panel — analytics &amp; moderation</span></div>
+<div class="dv-card" style="width:1208px;background:#F4F7F9" data-screen-label="Admin panel">
+
+  <div style="display:flex;align-items:center;justify-content:space-between;background:#0A2E4E;color:#fff;padding:16px 32px">
+    <div style="display:flex;align-items:center;gap:14px"><div style="font-size:19px;font-weight:700">Admin panel</div><span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;background:rgba(255,255,255,.15);border-radius:4px;padding:4px 10px">Super Admin</span></div>
+    <div style="display:flex;gap:24px;font-size:13.5px;font-weight:600;color:#B9CBDA"><span style="color:#fff;border-bottom:2px solid #7FC8A9;padding-bottom:4px">Overview</span><span>Users</span><span>Research</span><span>News</span><span>Jobs</span><span>Events</span><span>Reports</span><span>Logs</span></div>
+  </div>
+
+  <div style="padding:26px 32px 36px">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:22px">
+      <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:20px 22px"><div style="font-size:12.5px;font-weight:600;color:#5B6B78;margin-bottom:8px">Total members</div><div style="font-size:28px;font-weight:700">412</div><div style="font-size:12px;color:#1F8A5B;font-weight:600;margin-top:6px">▲ 6.2% this month</div></div>
+      <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:20px 22px"><div style="font-size:12.5px;font-weight:600;color:#5B6B78;margin-bottom:8px">Pending verifications</div><div style="font-size:28px;font-weight:700;color:#B7791F">9</div><div style="font-size:12px;color:#5B6B78;margin-top:6px">oldest 3 days</div></div>
+      <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:20px 22px"><div style="font-size:12.5px;font-weight:600;color:#5B6B78;margin-bottom:8px">Research awaiting review</div><div style="font-size:28px;font-weight:700;color:#0F5499">4</div><div style="font-size:12px;color:#5B6B78;margin-top:6px">2 theses · 2 case reports</div></div>
+      <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:20px 22px"><div style="font-size:12.5px;font-weight:600;color:#5B6B78;margin-bottom:8px">Flagged forum posts</div><div style="font-size:28px;font-weight:700;color:#C0392B">1</div><div style="font-size:12px;color:#5B6B78;margin-top:6px">patient identifier suspected</div></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:22px">
+      <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:24px 26px">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px"><div style="font-size:15.5px;font-weight:700">Member growth — 2026</div><div style="font-size:12.5px;color:#5B6B78">monthly registrations</div></div>
+        <div style="display:flex;align-items:flex-end;gap:14px;height:180px;border-bottom:1px solid #DCE4EA;padding:0 6px">
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:7px;height:100%"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B78">18</div><div style="width:100%;height:32%;background:#B9D3EA;border-radius:4px 4px 0 0"></div></div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:7px;height:100%"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B78">24</div><div style="width:100%;height:42%;background:#B9D3EA;border-radius:4px 4px 0 0"></div></div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:7px;height:100%"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B78">21</div><div style="width:100%;height:37%;background:#B9D3EA;border-radius:4px 4px 0 0"></div></div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:7px;height:100%"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B78">30</div><div style="width:100%;height:53%;background:#4A90D0;border-radius:4px 4px 0 0"></div></div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:7px;height:100%"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B78">38</div><div style="width:100%;height:67%;background:#4A90D0;border-radius:4px 4px 0 0"></div></div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:7px;height:100%"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B78">44</div><div style="width:100%;height:78%;background:#0F5499;border-radius:4px 4px 0 0"></div></div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:7px;height:100%"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#0F5499;font-weight:600">51</div><div style="width:100%;height:90%;background:#1F8A5B;border-radius:4px 4px 0 0"></div></div>
+        </div>
+        <div style="display:flex;gap:14px;padding:8px 6px 0">
+          <div style="flex:1;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B78">JAN</div>
+          <div style="flex:1;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B78">FEB</div>
+          <div style="flex:1;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B78">MAR</div>
+          <div style="flex:1;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B78">APR</div>
+          <div style="flex:1;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B78">MAY</div>
+          <div style="flex:1;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B78">JUN</div>
+          <div style="flex:1;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#0F5499;font-weight:600">JUL</div>
+        </div>
+      </div>
+
+      <div style="background:#fff;border:1px solid #DCE4EA;border-radius:8px;padding:24px 26px;align-self:start">
+        <div style="font-size:15.5px;font-weight:700;margin-bottom:16px">Pending member verifications</div>
+        <div style="display:flex;gap:12px;padding:11px 0;border-bottom:1px solid #EDF1F5;align-items:center"><div style="width:34px;height:34px;flex:none;border-radius:50%;background:#E6EFF7;display:flex;align-items:center;justify-content:center;font-weight:700;color:#0F5499;font-size:12px">GH</div><div style="flex:1"><div style="font-size:13.5px;font-weight:600">Grace Haule</div><div style="font-size:11.5px;color:#5B6B78">Student · MUHAS · ID uploaded</div></div><div style="display:flex;gap:6px"><span style="font-size:12px;font-weight:600;color:#fff;background:#1F8A5B;border-radius:5px;padding:5px 12px">Approve</span><span style="font-size:12px;font-weight:600;color:#C0392B;border:1px solid #EBD4D0;border-radius:5px;padding:5px 12px">Reject</span></div></div>
+        <div style="display:flex;gap:12px;padding:11px 0;border-bottom:1px solid #EDF1F5;align-items:center"><div style="width:34px;height:34px;flex:none;border-radius:50%;background:#E4F2EB;display:flex;align-items:center;justify-content:center;font-weight:700;color:#1F8A5B;font-size:12px">PM</div><div style="flex:1"><div style="font-size:13.5px;font-weight:600">Peter Msigwa</div><div style="font-size:11.5px;color:#5B6B78">Perfusionist · Dodoma RRH · cert pending</div></div><div style="display:flex;gap:6px"><span style="font-size:12px;font-weight:600;color:#fff;background:#1F8A5B;border-radius:5px;padding:5px 12px">Approve</span><span style="font-size:12px;font-weight:600;color:#C0392B;border:1px solid #EBD4D0;border-radius:5px;padding:5px 12px">Reject</span></div></div>
+        <div style="display:flex;gap:12px;padding:11px 0;align-items:center"><div style="width:34px;height:34px;flex:none;border-radius:50%;background:#F3E9DC;display:flex;align-items:center;justify-content:center;font-weight:700;color:#B7791F;font-size:12px">RN</div><div style="flex:1"><div style="font-size:13.5px;font-weight:600">Rehema Ngonyani</div><div style="font-size:11.5px;color:#5B6B78">ICU Nurse · Muhimbili · ID uploaded</div></div><div style="display:flex;gap:6px"><span style="font-size:12px;font-weight:600;color:#fff;background:#1F8A5B;border-radius:5px;padding:5px 12px">Approve</span><span style="font-size:12px;font-weight:600;color:#C0392B;border:1px solid #EBD4D0;border-radius:5px;padding:5px 12px">Reject</span></div></div>
+        <div style="font-size:13px;font-weight:600;color:#0F5499;margin-top:14px">View all 9 pending →</div>
+      </div>
+    </div>
+  </div>
+
+</div></div>
+
+</div>
+<p class="dv-next">Try next: "riff on the landing hero" · "show the news article page" · "mobile version of <a class="dv-oid" href="#1b">1b</a>" · "dark mode pass"</p>
+</section>
+
+</x-dc>
+</body>
+</html>
