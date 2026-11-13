@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* PerfCalc TZ theme.
+   Layout idea: one patient strip on top, one calculator per tab, results always beside inputs.
+   Primary is a deep venous blue; arterial red is kept for the logo and arterial labels only.
+   Semantic colours (ok / caution / alert) are separate from both. */
+@layer base {
+  :root {
+    --background: 210 25% 97%;
+    --foreground: 213 40% 13%;
+    --card: 0 0% 100%;
+    --card-foreground: 213 40% 13%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 213 40% 13%;
+    --primary: 206 78% 30%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 208 30% 92%;
+    --secondary-foreground: 213 40% 18%;
+    --muted: 210 24% 93%;
+    --muted-foreground: 213 14% 38%;
+    --accent: 204 60% 91%;
+    --accent-foreground: 206 78% 22%;
+    --destructive: 356 72% 44%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 211 22% 85%;
+    --input: 211 22% 78%;
+    --ring: 206 78% 40%;
+    --radius: 0.6rem;
+  }
+  .dark {
+    --background: 213 38% 7%;
+    --foreground: 208 30% 92%;
+    --card: 213 34% 11%;
+    --card-foreground: 208 30% 92%;
+    --popover: 213 34% 11%;
+    --popover-foreground: 208 30% 92%;
+    --primary: 199 82% 62%;
+    --primary-foreground: 213 45% 9%;
+    --secondary: 213 28% 17%;
+    --secondary-foreground: 208 30% 92%;
+    --muted: 213 28% 15%;
+    --muted-foreground: 210 16% 66%;
+    --accent: 206 50% 19%;
+    --accent-foreground: 199 82% 78%;
+    --destructive: 356 78% 62%;
+    --destructive-foreground: 213 45% 9%;
+    --border: 213 24% 21%;
+    --input: 213 24% 28%;
+    --ring: 199 82% 62%;
+    color-scheme: dark;
+  }
+  * { @apply border-border; }
+  html, body { height: 100%; }
+  body { @apply bg-background text-foreground font-sans antialiased; }
+  h1, h2, h3 { text-wrap: balance; }
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  input[type="number"] { -moz-appearance: textfield; }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { scrollbar-width: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+
+@media print {
+  @page { size: A4; margin: 12mm; }
+  body { background: #fff !important; color: #000 !important; }
+}
