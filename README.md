@@ -38,7 +38,7 @@ npm run build        # production build in dist/
 npm run build:single # one self-contained HTML file in dist-single/
 ```
 
-Pushing to `main` runs `.github/workflows/deploy.yml`, which tests, builds and publishes to GitHub Pages.
+Pushing to `main` runs `.github/workflows/deploy.yml`, which tests, builds and publishes to GitHub Pages. The Vercel projects linked to this repo build it too, using `vercel.json` (served from the site root).
 
 Stack: React 18, TypeScript, Vite, Tailwind CSS (shadcn tokens), vite-plugin-pwa.
 
