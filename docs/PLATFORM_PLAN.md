@@ -92,6 +92,8 @@ Each phase ships working features, keeps every existing feature, and passes the 
 
 ### Phase 2: scores, checklists, anaesthesia and nursing records (offline, no backend)
 
+Phase 2a (scores and checklist library) is built: GCS, NEWS2, RASS, CAM-ICU, Braden, Modified Aldrete, Morse; WHO Surgical Safety Checklist, SBAR and the hospital checklist editor. Still to come in Phase 2: SOFA, APACHE II, paediatric scores, and the anaesthesia, ICU, nursing and pressure injury records.
+
 - Scoring engine with GCS, RASS, CAM-ICU, SOFA, APACHE II, Braden, NEWS2, Modified Aldrete, FLACC and Numeric pain scales, Morse fall scale. Each with formula, interpretation, limitations and population, cited to the original publication.
 - Checklist engine: versioned checklists (English and Kiswahili) with source and version, tick, sign, print to PDF, save on the device. First set: WHO Surgical Safety Checklist (WHO 2009 text), anaesthesia machine checkout, SBAR handover, and the hospital's own lists entered through the editor. Remaining checklists from the brief drafted from cited guidelines and marked Draft until reviewed.
 - Module C: preoperative assessment form (ASA, Mallampati, airway), PACU with Modified Aldrete, printable anaesthesia record.

@@ -3,7 +3,7 @@
  * Append-only from the app's side; entries hold the calculation, not patient names.
  */
 
-export type AuditType = "calculation-confirmed" | "double-check" | "label-printed" | "formulary-changed" | "fluid-entry";
+export type AuditType = "calculation-confirmed" | "double-check" | "label-printed" | "formulary-changed" | "fluid-entry" | "score-recorded" | "checklist-completed" | "checklist-changed";
 
 export interface AuditEvent {
   id: string;

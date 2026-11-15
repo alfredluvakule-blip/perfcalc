@@ -6,6 +6,8 @@ import InfusionModule from "@/modules/infusion/InfusionModule";
 import FormularyEditor from "@/modules/infusion/FormularyEditor";
 import FluidsModule from "@/modules/fluids/FluidsModule";
 import AuditLog from "@/modules/AuditLog";
+import ScoresModule from "@/modules/scores/ScoresModule";
+import ChecklistsModule from "@/modules/checklists/ChecklistsModule";
 import { cn } from "@/lib/utils";
 import { I18nProvider, useI18n } from "./i18n";
 import { MODULES, findModule, type ModuleDef } from "./modules";
@@ -17,6 +19,8 @@ const VIEWS: Record<string, () => ReactNode> = {
   fluids: () => <FluidsModule />,
   formulary: () => <FormularyEditor />,
   audit: () => <AuditLog />,
+  scores: () => <ScoresModule />,
+  checklists: () => <ChecklistsModule />,
 };
 
 function StatusPill({ m }: { m: ModuleDef }) {

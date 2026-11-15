@@ -9,6 +9,9 @@ const LABEL: Record<AuditEvent["type"], string> = {
   "label-printed": "Label printed",
   "formulary-changed": "Formulary",
   "fluid-entry": "Fluid entry",
+  "score-recorded": "Score",
+  "checklist-completed": "Checklist",
+  "checklist-changed": "Checklist edited",
 };
 
 export default function AuditLog() {
