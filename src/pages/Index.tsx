@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Activity, Droplets, Pill, Beaker, BookOpen, Heart, Zap, Stethoscope, Wrench, GitBranch, ClipboardList, Moon, Sun } from "lucide-react";
+import { Activity, Droplets, Pill, Beaker, BookOpen, Heart, Zap, Stethoscope, Wrench, GitBranch, ClipboardList, Moon, Sun, LayoutGrid } from "lucide-react";
 import { CaseProvider, useCase } from "@/context/CaseContext";
 import FlowCalculator from "@/components/calculators/FlowCalculator";
 import HematocritCalculator from "@/components/calculators/HematocritCalculator";
@@ -53,7 +53,7 @@ function readTab(): string {
   return "flow";
 }
 
-const Calculator = () => {
+const Calculator = ({ onHome }: { onHome?: () => void }) => {
   const { state, theme, toggleTheme, resetAll } = useCase();
   const [tab, setTab] = useState(readTab);
   const [patientOpen, setPatientOpen] = useState(state.example);
@@ -115,6 +115,17 @@ const Calculator = () => {
             </div>
           </div>
           <div className="flex shrink-0 items-center gap-2">
+          {onHome ? (
+            <button
+              type="button"
+              onClick={onHome}
+              aria-label="Back to the NurseAnaesthesia Pro dashboard"
+              className="flex h-10 shrink-0 items-center gap-1.5 rounded-md border border-white/25 px-3 text-xs font-medium text-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            >
+              <LayoutGrid className="h-4 w-4" aria-hidden="true" />
+              <span className="hidden sm:inline">Dashboard</span>
+            </button>
+          ) : null}
           <InstallButton />
           <button
             type="button"
@@ -218,9 +229,10 @@ const Calculator = () => {
   );
 };
 
-const Index = () => (
+/** The original PerfCalc TZ app, mounted unchanged as the Perfusion module. */
+const Index = ({ onHome }: { onHome?: () => void }) => (
   <CaseProvider>
-    <Calculator />
+    <Calculator onHome={onHome} />
   </CaseProvider>
 );
 
