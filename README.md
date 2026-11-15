@@ -26,7 +26,7 @@ All defaults are textbook or guideline starting values, **not a hospital protoco
 
 ## Team photos
 
-Add `perfusion-team-1.jpg`, `perfusion-team-2.jpg`, `perfusion-team-3.png` and `perfusion-bg.png` to `src/assets/` and they appear in the header and gallery. Without them the app builds and hides the gallery.
+The three team photos are in `src/assets/` (`perfusion-team-1.jpg` to `-3.jpg`) and are described in `src/lib/photos.ts`: caption, alt text and which part stays in view. They appear in the animated banner at the top (`src/components/HeroBanner.tsx`) and in the gallery at the bottom. Visitors can hide the banner; the choice is remembered on their device. To change a photo, replace the file and keep its name. Adding `perfusion-bg.png` gives the title bar a background image.
 
 ## Development
 

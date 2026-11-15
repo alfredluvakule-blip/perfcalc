@@ -65,8 +65,64 @@
   .no-scrollbar { scrollbar-width: none; }
 }
 
+/* ---------------------------------------------------------------------
+   Banner motion (src/components/HeroBanner.tsx).
+   Every element is fully visible at rest; the keyframes only describe how
+   it arrives or loops, so nothing is lost when motion is switched off. */
+@keyframes pc-kenburns-a {
+  from { transform: scale(1.03); }
+  to { transform: scale(1.13) translate3d(-1.5%, -1%, 0); }
+}
+@keyframes pc-kenburns-b {
+  from { transform: scale(1.13) translate3d(1.5%, -1%, 0); }
+  to { transform: scale(1.03); }
+}
+@keyframes pc-flow { to { stroke-dashoffset: -280; } }
+@keyframes pc-flow-back { to { stroke-dashoffset: 280; } }
+@keyframes pc-ecg {
+  0% { stroke-dashoffset: 100; opacity: 0; }
+  8% { opacity: 1; }
+  62% { stroke-dashoffset: 0; opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 0; }
+}
+@keyframes pc-glow {
+  0%, 100% { opacity: 0.15; transform: scale(0.8); }
+  50% { opacity: 0.8; transform: scale(1.15); }
+}
+@keyframes pc-rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes pc-word {
+  from { opacity: 0; transform: translateY(70%); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes pc-frame {
+  from { opacity: 0; transform: translateY(16px) scale(0.97); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes pc-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.pc-kenburns-a { animation: pc-kenburns-a 18s ease-in-out infinite alternate; }
+.pc-kenburns-b { animation: pc-kenburns-b 18s ease-in-out infinite alternate; }
+.pc-flow { animation: pc-flow 7s linear infinite; }
+.pc-flow-back { animation-name: pc-flow-back; }
+.pc-ecg { stroke-dasharray: 100; animation: pc-ecg 2.6s ease-in-out infinite; }
+.pc-glow { animation: pc-glow 3.2s ease-in-out infinite; }
+.pc-rise { animation: pc-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.pc-delay-1 { animation-delay: 0.12s; }
+.pc-delay-2 { animation-delay: 0.24s; }
+.pc-word { animation: pc-word 0.45s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.pc-frame { animation: pc-frame 0.8s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.pc-progress { animation: pc-progress linear both; }
+
 @media (prefers-reduced-motion: reduce) {
-  * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+  .pc-hero *, .pc-hero { animation: none !important; }
+  .pc-glow { opacity: 0.45; }
 }
 
 @media print {
