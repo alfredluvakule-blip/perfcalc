@@ -25,6 +25,9 @@ The app opens on a dashboard of modules (English or Kiswahili, light or dark). B
 - **Fluid management** (`src/modules/fluids`): fluid balance chart with intake and output entries, net and cumulative balance, urine output in mL/kg/h, % fluid overload and a chart; maintenance fluid (Holliday-Segar or a protocol mL/kg/day rate) and deficit from % dehydration.
 - **Clinical scores** (`src/modules/scores`): GCS (with NT), NEWS2 with the RCP response, RASS, CAM-ICU, Braden, Modified Aldrete and Morse fall scale, each citing its original publication, with Kiswahili option labels.
 - **Checklist library** (`src/modules/checklists`): WHO Surgical Safety Checklist (2009 text) and SBAR handover built in, in English and Kiswahili; hospitals write their own checklists from approved protocols in the editor (versioned, sourced, export and import); tick, print or save as PDF, and keep completion records on the device. The other checklists named in the plan are listed as awaiting the hospital's approved content.
+- **Anaesthesia** (`src/modules/anaesthesia`): pre-anaesthetic assessment (history, fasting, airway with Mallampati, ASA class, plan, consent), PerfCalc's paediatric tube and LMA estimates, and a PACU recovery record; all printable.
+- **ICU daily review** (`src/modules/icu`): A to E, lines, infection, nutrition, skin, mobility, psychological support, family and discharge readiness; printable.
+- **Pressure injury** (`src/modules/pressure`): Braden category, repositioning log with reminders at the care-plan interval, NPIAP 2016 staging and wound log, and a printable daily prevention report.
 - **Audit log** on the device for confirmed calculations, double checks, printed labels and formulary changes.
 - **Perfusion (PerfCalc TZ)**, unchanged, described below. Old links such as `#sheet` and `#drugs` still open it.
 

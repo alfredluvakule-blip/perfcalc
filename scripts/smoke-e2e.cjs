@@ -80,7 +80,16 @@ const check = (ok, what) => {
     check(await p.isVisible("text=1 / 19"), `${name}: WHO checklist ticks count`);
     if (name === "phone") await p.screenshot({ path: `${SHOTS}/${name}-checklist.png`, fullPage: true });
 
-    await p.goto(`${BASE}/#/icu`);
+    await p.goto(`${BASE}/#/anaesthesia`);
+    await p.getByRole("button", { name: /^ASA III/ }).click();
+    check(await p.isVisible("text=1 / "), `${name}: pre-op form counts a filled field`);
+    await p.goto(`${BASE}/#/pressure`);
+    await p.getByLabel("Reposition every").fill("120");
+    await p.getByRole("button", { name: "Repositioned now" }).click();
+    check(await p.isVisible("text=Next "), `${name}: repositioning reminder is scheduled`);
+    await p.getByRole("button", { name: "New patient" }).click();
+
+    await p.goto(`${BASE}/#/library`);
     check(await p.isVisible("text=Planned for phase"), `${name}: planned module shows its phase`);
     await p.close();
   }

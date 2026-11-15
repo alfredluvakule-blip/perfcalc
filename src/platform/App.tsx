@@ -8,6 +8,9 @@ import FluidsModule from "@/modules/fluids/FluidsModule";
 import AuditLog from "@/modules/AuditLog";
 import ScoresModule from "@/modules/scores/ScoresModule";
 import ChecklistsModule from "@/modules/checklists/ChecklistsModule";
+import AnaesthesiaModule from "@/modules/anaesthesia/AnaesthesiaModule";
+import IcuModule from "@/modules/icu/IcuModule";
+import PressureModule from "@/modules/pressure/PressureModule";
 import { cn } from "@/lib/utils";
 import { I18nProvider, useI18n } from "./i18n";
 import { MODULES, findModule, type ModuleDef } from "./modules";
@@ -21,6 +24,9 @@ const VIEWS: Record<string, () => ReactNode> = {
   audit: () => <AuditLog />,
   scores: () => <ScoresModule />,
   checklists: () => <ChecklistsModule />,
+  anaesthesia: () => <AnaesthesiaModule />,
+  icu: () => <IcuModule />,
+  pressure: () => <PressureModule />,
 };
 
 function StatusPill({ m }: { m: ModuleDef }) {
