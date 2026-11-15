@@ -122,12 +122,15 @@ export function TextField({
   onChange,
   placeholder,
   className,
+  list,
 }: {
   label: string;
   value: string;
   onChange: (value: string) => void;
   placeholder?: string;
   className?: string;
+  /** id of a <datalist> with suggestions. */
+  list?: string;
 }) {
   const id = useId();
   return (
@@ -139,6 +142,7 @@ export function TextField({
         id={id}
         type="text"
         value={value}
+        list={list}
         placeholder={placeholder}
         onChange={(e) => onChange(e.target.value)}
         className="h-11 w-full rounded-md border border-input bg-background px-3 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring"

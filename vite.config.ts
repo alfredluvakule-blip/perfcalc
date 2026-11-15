@@ -52,9 +52,9 @@ export default defineConfig({
           includeAssets: ["icons/favicon-32.png", "icons/icon.svg", "icons/apple-touch-icon.png"],
           manifest: {
             id: base,
-            name: "PerfCalc TZ — CPB Calculator",
-            short_name: "PerfCalc TZ",
-            description: "Cardiopulmonary bypass calculator and reference for perfusionists: flow, haemodilution, prime, drugs, equipment and a printable case sheet. Works offline.",
+            name: "NurseAnaesthesia Pro — incl. PerfCalc TZ",
+            short_name: "NurseAnaesthesia",
+            description: "Clinical calculator and assistant for nurses, anaesthesia and critical care: infusions and syringe pumps, fluid balance, and the PerfCalc TZ cardiopulmonary bypass calculator. Works offline.",
             lang: "en",
             start_url: base,
             scope: base,
@@ -70,6 +70,8 @@ export default defineConfig({
               { src: "icons/maskable-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" },
             ],
             shortcuts: [
+              { name: "Infusion calculator", short_name: "Infusion", url: `${base}#/infusion`, icons: [{ src: "icons/icon-192.png", sizes: "192x192" }] },
+              { name: "Fluid balance", short_name: "Fluids", url: `${base}#/fluids`, icons: [{ src: "icons/icon-192.png", sizes: "192x192" }] },
               { name: "Case sheet", short_name: "Case sheet", url: `${base}#sheet`, icons: [{ src: "icons/icon-192.png", sizes: "192x192" }] },
               { name: "Drug dosages", short_name: "Drugs", url: `${base}#drugs`, icons: [{ src: "icons/icon-192.png", sizes: "192x192" }] },
             ],

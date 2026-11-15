@@ -129,3 +129,12 @@
   @page { size: A4; margin: 12mm; }
   body { background: #fff !important; color: #000 !important; }
 }
+
+/* Syringe label printing (src/modules/infusion/SyringePrep.tsx):
+   while body has .nap-print-label only the label is printed. */
+@media print {
+  body.nap-print-label * { visibility: hidden !important; }
+  body.nap-print-label .nap-label,
+  body.nap-print-label .nap-label * { visibility: visible !important; }
+  body.nap-print-label .nap-label { position: absolute; left: 0; top: 0; }
+}
