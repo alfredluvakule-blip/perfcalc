@@ -13,16 +13,9 @@ import CaseSheet from "@/components/calculators/CaseSheet";
 import { PatientEditor, PatientSummary } from "@/components/calculators/PatientBar";
 import { EquipmentCalculation, CpbTechniques } from "@/components/calculators/ReferenceTables";
 import { InstallButton, UpdateBanner } from "@/components/AppInstall";
-import perfTeam1 from "@/assets/perfusion-team-1.jpg";
-import perfTeam2 from "@/assets/perfusion-team-2.jpg";
-import perfTeam3 from "@/assets/perfusion-team-3.png";
+import HeroBanner from "@/components/HeroBanner";
+import { teamPhotos } from "@/lib/photos";
 import perfBg from "@/assets/perfusion-bg.png";
-
-const teamPhotos = [
-  { src: perfTeam1, alt: "Perfusionists preparing CPB circuit with IV lines" },
-  { src: perfTeam2, alt: "Perfusionist operating the heart-lung machine" },
-  { src: perfTeam3, alt: "Perfusionist monitoring CPB equipment during surgery" },
-].filter((photo) => Boolean(photo.src));
 
 const tabs = [
   { value: "flow", label: "Flow & BSA", icon: Activity, content: <FlowCalculator /> },
@@ -38,6 +31,15 @@ const tabs = [
 ];
 
 const TAB_KEY = "perfcalc-tz-tab";
+const BANNER_KEY = "perfcalc-tz-banner";
+
+function readBanner(): boolean {
+  try {
+    return window.localStorage.getItem(BANNER_KEY) !== "hidden";
+  } catch {
+    return true;
+  }
+}
 
 function readTab(): string {
   const hash = window.location.hash.slice(1);
@@ -55,6 +57,17 @@ const Calculator = () => {
   const { state, theme, toggleTheme, resetAll } = useCase();
   const [tab, setTab] = useState(readTab);
   const [patientOpen, setPatientOpen] = useState(state.example);
+  const [bannerOpen, setBannerOpen] = useState(readBanner);
+
+  const showBanner = (open: boolean) => {
+    setBannerOpen(open);
+    try {
+      window.localStorage.setItem(BANNER_KEY, open ? "shown" : "hidden");
+    } catch {
+      /* ignore */
+    }
+    if (open) window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   const stripRef = useRef<HTMLDivElement>(null);
 
   // App shortcuts and links such as #sheet or #drugs open that tab.
@@ -114,6 +127,7 @@ const Calculator = () => {
           </button>
           </div>
         </div>
+        {bannerOpen && teamPhotos.length > 0 ? <HeroBanner onHide={() => showBanner(false)} /> : null}
       </header>
 
       {/* Main Content */}
@@ -160,7 +174,13 @@ const Calculator = () => {
             <div className="grid grid-cols-3 gap-3">
               {teamPhotos.map((photo, i) => (
                 <div key={i} className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-md">
-                  <img src={photo.src} alt={photo.alt} className="h-full w-full object-cover transition-transform duration-500 hover:scale-105" loading="lazy" />
+                  <img
+                    src={photo.src}
+                    alt={photo.alt}
+                    className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                    style={{ objectPosition: photo.position }}
+                    loading="lazy"
+                  />
                 </div>
               ))}
             </div>
@@ -183,6 +203,15 @@ const Calculator = () => {
           >
             Reset all saved settings to defaults
           </button>
+          {!bannerOpen && teamPhotos.length > 0 ? (
+            <button
+              type="button"
+              onClick={() => showBanner(true)}
+              className="ml-4 rounded text-[11px] font-medium text-primary underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              Show the photo banner
+            </button>
+          ) : null}
         </div>
       </footer>
     </div>
