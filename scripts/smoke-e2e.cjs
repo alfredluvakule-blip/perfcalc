@@ -58,6 +58,28 @@ const check = (ok, what) => {
     check(await p.isVisible("text=+500"), `${name}: fluid entry counted in the balance`);
     if (name === "phone") await p.screenshot({ path: `${SHOTS}/${name}-fluids.png`, fullPage: true });
 
+    await p.goto(`${BASE}/#/scores`);
+    await p.getByRole("button", { name: /^3\s*To sound/ }).click();
+    await p.getByRole("button", { name: /^4\s*Confused/ }).click();
+    await p.getByRole("button", { name: /^6\s*Obeys commands/ }).click();
+    check(await p.isVisible("text=E3 V4 M6"), `${name}: GCS E3 V4 M6 = 13`);
+    await p.getByRole("tab", { name: "NEWS2" }).click();
+    await p.getByLabel("Respiration rate").fill("16");
+    await p.getByLabel("SpO₂", { exact: true }).fill("98");
+    await p.getByRole("button", { name: "Air", exact: true }).click();
+    await p.getByLabel("Systolic BP").fill("120");
+    await p.getByLabel("Pulse").fill("75");
+    await p.getByLabel("Temperature").fill("37");
+    await p.getByRole("button", { name: "New confusion, V, P or U" }).click();
+    check(await p.isVisible("text=Low-medium (single 3)"), `${name}: NEWS2 single 3 is low-medium`);
+    if (name === "phone") await p.screenshot({ path: `${SHOTS}/${name}-news2.png`, fullPage: true });
+
+    await p.goto(`${BASE}/#/checklists`);
+    await p.getByText("WHO Surgical Safety Checklist").first().click();
+    await p.getByRole("button", { name: /Pulse oximeter on patient/ }).click();
+    check(await p.isVisible("text=1 / 19"), `${name}: WHO checklist ticks count`);
+    if (name === "phone") await p.screenshot({ path: `${SHOTS}/${name}-checklist.png`, fullPage: true });
+
     await p.goto(`${BASE}/#/icu`);
     check(await p.isVisible("text=Planned for phase"), `${name}: planned module shows its phase`);
     await p.close();

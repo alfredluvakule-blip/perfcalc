@@ -1,6 +1,7 @@
 import type { LucideIcon } from "lucide-react";
 import {
   Activity,
+  Gauge,
   BarChart3,
   BedDouble,
   BookMarked,
@@ -44,7 +45,8 @@ export const MODULES: ModuleDef[] = [
   { id: "anaesthesia", letter: "C", title: "modAnaesthesia", description: "modAnaesthesiaDesc", icon: Stethoscope, status: "planned", phase: 2, roles: ["anaesthetist", "theatre"], keywords: "asa mallampati airway record pacu aldrete nusukaputi" },
   { id: "icu", letter: "D", title: "modIcu", description: "modIcuDesc", icon: Activity, status: "planned", phase: 2, roles: ["icu", "nurse"], keywords: "ventilator gcs rass cam-icu sofa apache news2 abg daily review" },
   { id: "nursing", letter: "E", title: "modNursing", description: "modNursingDesc", icon: UserRound, status: "planned", phase: 2, roles: ["nurse"], keywords: "care plan diagnosis mar handover sbar discharge wound fall uuguzi" },
-  { id: "checklists", letter: "F", title: "modChecklists", description: "modChecklistsDesc", icon: ListChecks, status: "planned", phase: 2, roles: ALL, keywords: "who surgical safety vap clabsi cauti count time-out orodha" },
+  { id: "scores", title: "modScores", description: "modScoresDesc", icon: Gauge, status: "partial", phase: 2, roles: ALL, keywords: "gcs glasgow news2 rass cam-icu delirium braden aldrete morse falls early warning alama" },
+  { id: "checklists", letter: "F", title: "modChecklists", description: "modChecklistsDesc", icon: ListChecks, status: "partial", phase: 2, roles: ALL, keywords: "who surgical safety vap clabsi cauti count time-out orodha" },
   { id: "pressure", letter: "G", title: "modPressure", description: "modPressureDesc", icon: BedDouble, status: "planned", phase: 2, roles: ["nurse", "icu"], keywords: "braden bed sore staging repositioning vidonda" },
   { id: "emergency", letter: "H", title: "modEmergency", description: "modEmergencyDesc", icon: Siren, status: "planned", phase: 4, roles: ALL, keywords: "cardiac arrest bls als anaphylaxis sepsis shock defibrillator dharura" },
   { id: "library", letter: "I", title: "modLibrary", description: "modLibraryDesc", icon: BookMarked, status: "planned", phase: 4, roles: ALL, keywords: "guidelines documents pdf upload maktaba" },
