@@ -113,6 +113,9 @@ const check = (ok, what) => {
     check(await p.isVisible("text=Staff sign-in"), `${name}: account page offers sign-in without blocking the app`);
     if (name === "phone") await p.screenshot({ path: `${SHOTS}/${name}-account.png`, fullPage: true });
 
+    await p.goto(`${BASE}/#/formulary`);
+    check(await p.isVisible("text=Sign in under Staff account to share this formulary"), `${name}: formulary offers server sharing after sign-in`);
+
     await p.goto(`${BASE}/#/pressure`);
     await p.getByLabel("Reposition every").fill("120");
     await p.getByRole("button", { name: "Repositioned now" }).click();

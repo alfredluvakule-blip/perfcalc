@@ -18,6 +18,7 @@ import {
 } from "@/lib/clinical/checklists";
 import { logAudit, newId } from "@/lib/clinical/audit";
 import { cn } from "@/lib/utils";
+import ServerVersions from "@/components/clinical/ServerVersions";
 import { useI18n } from "@/platform/i18n";
 import { Button, Grid, Note, Panel, Pill, SelectField, TextField } from "@/components/calculators/shared";
 
@@ -388,6 +389,21 @@ export default function ChecklistsModule() {
           })}
         </>
       )}
+      {view === "library" ? (
+        <ServerVersions
+          kind="checklists"
+          local={{ format: "nurseanaesthesia-pro/checklists", version: 1, exportedOn: "", checklists: hospital }}
+          summarize={(d) => {
+            const n = Array.isArray((d as { checklists?: unknown[] })?.checklists) ? (d as { checklists: unknown[] }).checklists.length : 0;
+            return `${n} hospital checklist${n === 1 ? "" : "s"}`;
+          }}
+          onApply={(d, v) => {
+            const { checklists, problems } = parseChecklistFile(JSON.stringify(d));
+            persist(checklists, `Applied hospital checklist library v${v} from the server (${checklists.length} checklists)`);
+            setMsg([`Now using the approved hospital checklist library v${v}.`, ...problems]);
+          }}
+        />
+      ) : null}
     </div>
   );
 }
