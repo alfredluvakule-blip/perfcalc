@@ -4,6 +4,9 @@ import {
   BRADEN,
   GCS,
   MORSE,
+  FLACC,
+  sofa,
+  type SofaInput,
   OPTION_SCORES,
   RASS,
   camIcu,
@@ -42,6 +45,7 @@ describe("option scores are internally consistent", () => {
     expect(range(BRADEN)).toEqual([6, 23]);
     expect(range(ALDRETE)).toEqual([0, 10]);
     expect(range(MORSE)).toEqual([0, 125]);
+    expect(range(FLACC)).toEqual([0, 10]);
   });
 });
 
@@ -140,5 +144,61 @@ describe("CAM-ICU", () => {
     expect(camIcu({ rass: 0, acuteChange: true, attentionErrors: 3, thinkingErrors: null }).result).toBe("incomplete");
     expect(camIcu({ rass: 0, acuteChange: true, attentionErrors: 3, thinkingErrors: 2 }).result).toBe("positive");
     expect(camIcu({ rass: 0, acuteChange: true, attentionErrors: 3, thinkingErrors: 1 }).result).toBe("negative");
+  });
+});
+
+describe("SOFA (Vincent 1996)", () => {
+  const base: SofaInput = {
+    pao2: 95, pao2Unit: "mmHg", fio2Pct: 21, respSupport: false,
+    platelets: 250, bilirubin: 10, bilirubinUnit: "umol/L",
+    map: 85, dopamine: null, dobutamine: false, adrenaline: null, noradrenaline: null,
+    gcs: 15, creatinine: 80, creatinineUnit: "umol/L", urine24h: null, baseline: null,
+  };
+  const pts = (i: Partial<SofaInput>, id: string) => sofa({ ...base, ...i }).organs.find((o) => o.id === id)?.points;
+
+  it("normal values score 0", () => {
+    const r = sofa(base);
+    expect(r.total).toBe(0);
+    expect(r.missing).toEqual([]);
+  });
+  it("respiration needs support for 3 and 4", () => {
+    expect(pts({ pao2: 60, fio2Pct: 40, respSupport: false }, "resp")).toBe(2); // P/F 150, no support
+    expect(pts({ pao2: 60, fio2Pct: 40, respSupport: true }, "resp")).toBe(3);
+    expect(pts({ pao2: 60, fio2Pct: 80, respSupport: true }, "resp")).toBe(4); // P/F 75
+    expect(pts({ pao2: 120, fio2Pct: 40, respSupport: false }, "resp")).toBe(1); // 300
+    expect(pts({ pao2: 16, pao2Unit: "kPa", fio2Pct: 40, respSupport: true }, "resp")).toBe(1); // 120 mmHg / 0.4 = 300
+  });
+  it("platelets boundaries", () => {
+    expect([150, 149, 100, 99, 50, 49, 20, 19].map((x) => pts({ platelets: x }, "coag"))).toEqual([0, 1, 1, 2, 2, 3, 3, 4]);
+  });
+  it("bilirubin in both units", () => {
+    expect([19, 20, 32, 33, 101, 102, 204, 205].map((x) => pts({ bilirubin: x }, "liver"))).toEqual([0, 1, 1, 2, 2, 3, 3, 4]);
+    expect([1.1, 1.2, 1.9, 2.0, 5.9, 6.0, 11.9, 12].map((x) => pts({ bilirubin: x, bilirubinUnit: "mg/dL" }, "liver"))).toEqual([0, 1, 1, 2, 2, 3, 3, 4]);
+  });
+  it("cardiovascular", () => {
+    expect(pts({ map: 69 }, "cardio")).toBe(1);
+    expect(pts({ dobutamine: true }, "cardio")).toBe(2);
+    expect(pts({ dopamine: 5 }, "cardio")).toBe(2);
+    expect(pts({ dopamine: 6 }, "cardio")).toBe(3);
+    expect(pts({ noradrenaline: 0.1 }, "cardio")).toBe(3);
+    expect(pts({ noradrenaline: 0.11 }, "cardio")).toBe(4);
+    expect(pts({ dopamine: 16 }, "cardio")).toBe(4);
+    expect(pts({ map: null }, "cardio")).toBeNull();
+  });
+  it("GCS bands", () => {
+    expect([15, 14, 13, 12, 10, 9, 6, 5, 3].map((g) => pts({ gcs: g }, "cns"))).toEqual([0, 1, 1, 2, 2, 3, 3, 4, 4]);
+  });
+  it("renal takes the worse of creatinine and urine", () => {
+    expect([109, 110, 170, 171, 299, 300, 440, 441].map((x) => pts({ creatinine: x }, "renal"))).toEqual([0, 1, 1, 2, 2, 3, 3, 4]);
+    expect(pts({ creatinine: 150, urine24h: 400 }, "renal")).toBe(3);
+    expect(pts({ creatinine: 150, urine24h: 150 }, "renal")).toBe(4);
+    expect(pts({ creatinine: null, urine24h: 1500 }, "renal")).toBe(0);
+  });
+  it("missing organs give no total but a partial sum, and the change from baseline", () => {
+    const r = sofa({ ...base, platelets: null, gcs: 9 });
+    expect(r.total).toBeNull();
+    expect(r.partial).toBe(3);
+    expect(r.missing).toEqual(["Coagulation"]);
+    expect(sofa({ ...base, gcs: 9, baseline: 0 }).delta).toBe(3);
   });
 });

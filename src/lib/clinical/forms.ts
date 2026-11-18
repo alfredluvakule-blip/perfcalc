@@ -262,4 +262,266 @@ export const PACU: FormDef = {
   ],
 };
 
-export const FORMS: FormDef[] = [PREOP, PACU, ICU_DAILY];
+
+/* ---------------------------- intraoperative record ---------------------------- */
+
+const chk = (id: string, en: string, sw: string): Field => ({ id, kind: "check", label: b(en, sw) });
+const tx = (id: string, en: string, sw: string): Field => ({ id, kind: "text", label: b(en, sw) });
+const nm = (id: string, en: string, sw: string, unit?: string): Field => ({ id, kind: "number", label: b(en, sw), unit });
+
+export const CORMACK_LEHANE = [
+  { value: "1", label: b("Grade 1", "Daraja 1"), detail: b("Most of the glottis visible", "Sehemu kubwa ya glottis inaonekana") },
+  { value: "2", label: b("Grade 2", "Daraja 2"), detail: b("Only the posterior part of the glottis visible", "Sehemu ya nyuma ya glottis tu inaonekana") },
+  { value: "3", label: b("Grade 3", "Daraja 3"), detail: b("Only the epiglottis visible", "Epiglottis tu inaonekana") },
+  { value: "4", label: b("Grade 4", "Daraja 4"), detail: b("No glottic structure visible", "Hakuna sehemu ya glottis inayoonekana") },
+];
+
+export const INTRAOP: FormDef = {
+  id: "intraop",
+  title: b("Intraoperative anaesthesia record", "Rekodi ya nusukaputi wakati wa upasuaji"),
+  version: "0.1",
+  source:
+    "Headings from the requested anaesthesia workflow. Monitoring list: Klein AA, et al. Recommendations for standards of monitoring during anaesthesia and recovery 2021. Anaesthesia. 2021;76(9):1212–1223. Laryngoscopy grade: Cormack RS, Lehane J. Anaesthesia. 1984;39(11):1105–1111. Drugs and doses are recorded as given; the record does not suggest any.",
+  sections: [
+    {
+      id: "case",
+      title: b("Patient, team and times", "Mgonjwa, timu na muda"),
+      fields: [
+        tx("ref", "Patient name or ID (printed only, never saved)", "Jina au namba ya mgonjwa (inachapishwa tu)"),
+        tx("procedure", "Procedure", "Upasuaji"),
+        tx("anaesthetist", "Anaesthetist or anaesthesia provider", "Mtoa nusukaputi"),
+        tx("surgeon", "Surgeon", "Daktari wa upasuaji"),
+        tx("tStart", "Anaesthesia start time", "Saa ya kuanza nusukaputi"),
+        tx("tKnife", "Surgery start time", "Saa ya kuanza upasuaji"),
+        tx("tEnd", "Surgery end time", "Saa ya kumaliza upasuaji"),
+        tx("tOut", "Out of theatre", "Saa ya kutoka chumba cha upasuaji"),
+      ],
+    },
+    {
+      id: "checks",
+      title: b("Before induction", "Kabla ya kuanza"),
+      fields: [
+        chk("signIn", "WHO Surgical Safety Checklist sign-in done", "Orodha ya WHO (sign-in) imekamilika"),
+        chk("machine", "Anaesthetic machine and suction checked", "Mashine ya nusukaputi na kifyonzaji vimekaguliwa"),
+        chk("emergencyDrugs", "Emergency drugs and difficult airway equipment available", "Dawa za dharura na vifaa vya njia ngumu ya hewa vipo"),
+        chk("fasting", "Fasting status confirmed", "Hali ya kufunga imethibitishwa"),
+      ],
+    },
+    {
+      id: "tech",
+      title: b("Technique", "Mbinu"),
+      fields: [
+        {
+          id: "technique",
+          kind: "choice",
+          label: b("Anaesthetic technique", "Aina ya nusukaputi"),
+          options: [
+            { value: "ga", label: b("General", "Ya jumla") },
+            { value: "regional", label: b("Regional (spinal, epidural, block)", "Ya sehemu (spinal, epidural, block)") },
+            { value: "combined", label: b("General with regional", "Ya jumla na ya sehemu") },
+            { value: "sedation", label: b("Sedation", "Usingizi mwepesi") },
+            { value: "local", label: b("Local with monitoring", "Ganzi ya eneo pamoja na uangalizi") },
+          ],
+        },
+        { id: "regionalDetail", kind: "textarea", label: b("Regional: site, needle, level, drug and volume as given", "Ya sehemu: eneo, sindano, kiwango, dawa na ujazo uliotolewa") },
+      ],
+    },
+    {
+      id: "airway",
+      title: b("Airway", "Njia ya hewa"),
+      fields: [
+        tx("device", "Device and size (for example ETT 7.5 cuffed, LMA 4)", "Kifaa na ukubwa (mfano ETT 7.5, LMA 4)"),
+        tx("depth", "Depth at lips or teeth", "Kina kwenye midomo au meno"),
+        { id: "cl", kind: "choice", label: b("Laryngoscopy view (Cormack–Lehane)", "Muonekano wa laringoskopi (Cormack–Lehane)"), options: CORMACK_LEHANE },
+        nm("attempts", "Intubation attempts", "Majaribio ya kuingiza mrija"),
+        tx("airwayAids", "Aids used (bougie, video laryngoscope)", "Vifaa saidizi (bougie, video laryngoscope)"),
+        chk("etco2Confirmed", "Tube position confirmed by capnography", "Mahali pa mrija pamethibitishwa kwa capnography"),
+      ],
+    },
+    {
+      id: "monitoring",
+      title: b("Monitoring", "Uangalizi"),
+      fields: [
+        chk("mEcg", "ECG", "ECG"),
+        chk("mNibp", "Non-invasive blood pressure", "Shinikizo la damu (kifaa cha nje)"),
+        chk("mSpo2", "Pulse oximetry", "Oksimita"),
+        chk("mCapno", "Capnography", "Capnography"),
+        chk("mAgent", "Inspired oxygen and agent monitoring", "Uangalizi wa oksijeni na dawa ya gesi"),
+        chk("mTemp", "Temperature", "Joto"),
+        chk("mNmt", "Neuromuscular monitoring", "Uangalizi wa misuli (NMT)"),
+        tx("invasive", "Invasive lines (arterial, central) and site", "Mistari ya ndani (ateri, kati) na mahali"),
+        tx("ivAccess", "IV access (size, site)", "Kanula (ukubwa, mahali)"),
+      ],
+    },
+    {
+      id: "drugs",
+      title: b("Drugs given", "Dawa zilizotolewa"),
+      fields: [
+        { id: "induction", kind: "textarea", label: b("Induction: drug, dose, route, time", "Kuanza: dawa, kipimo, njia, saa"), rows: 3 },
+        { id: "maintenance", kind: "textarea", label: b("Maintenance: agent or infusion and settings", "Kuendeleza: dawa ya gesi au infusion na mipangilio"), rows: 2 },
+        { id: "otherDrugs", kind: "textarea", label: b("Analgesia, antibiotics, antiemetics, vasopressors and others: drug, dose, time", "Dawa za maumivu, antibiotiki, kichefuchefu, vasopressor na nyinginezo: dawa, kipimo, saa"), rows: 4 },
+        tx("antibioticTime", "Antibiotic prophylaxis time (if given)", "Saa ya antibiotiki ya kinga (kama imetolewa)"),
+      ],
+    },
+    {
+      id: "fluids",
+      title: b("Fluids, blood and losses", "Maji, damu na upotevu"),
+      fields: [
+        nm("crystalloid", "Crystalloid", "Crystalloid", "mL"),
+        nm("colloid", "Colloid", "Colloid", "mL"),
+        tx("blood", "Blood products (type, units, unit numbers)", "Bidhaa za damu (aina, uniti, namba)"),
+        nm("ebl", "Estimated blood loss", "Makadirio ya damu iliyopotea", "mL"),
+        nm("urine", "Urine output", "Mkojo", "mL"),
+      ],
+    },
+    {
+      id: "events",
+      title: b("Events and complications", "Matukio na matatizo"),
+      fields: [{ id: "events", kind: "textarea", label: b("Time, event, action taken", "Saa, tukio, hatua iliyochukuliwa"), rows: 4 }],
+    },
+    {
+      id: "emergence",
+      title: b("Emergence and handover", "Kuamka na makabidhiano"),
+      fields: [
+        tx("reversal", "Reversal given (drug, dose) and NMT result", "Dawa ya kurejesha (dawa, kipimo) na matokeo ya NMT"),
+        tx("extubation", "Extubation time and condition", "Saa ya kutoa mrija na hali"),
+        tx("handoverTo", "Handed over to (PACU or ICU nurse)", "Amekabidhiwa kwa (muuguzi wa PACU au ICU)"),
+        { id: "postopPlan", kind: "textarea", label: b("Post-operative instructions (analgesia, oxygen, fluids, monitoring)", "Maelekezo baada ya upasuaji (maumivu, oksijeni, maji, uangalizi)") },
+      ],
+    },
+  ],
+};
+
+/* ---------------------------- nursing (E) ---------------------------- */
+
+export const NURSING_ADMISSION: FormDef = {
+  id: "nursing-admission",
+  title: b("Nursing admission assessment", "Tathmini ya uuguzi wakati wa kulazwa"),
+  version: "0.1",
+  source:
+    "Structured by systems and activities of daily living, the usual headings of a nursing admission assessment. Use Clinical scores for Braden and Morse, and follow local policy for reassessment frequency.",
+  sections: [
+    {
+      id: "adm",
+      title: b("Admission", "Kulazwa"),
+      fields: [
+        tx("ref", "Patient name or ID (printed only, never saved)", "Jina au namba ya mgonjwa (inachapishwa tu)"),
+        tx("reason", "Reason for admission", "Sababu ya kulazwa"),
+        tx("from", "Admitted from", "Ametoka wapi"),
+        tx("allergies", "Allergies and reactions", "Mzio na athari"),
+        tx("alerts", "Alerts (infection, safeguarding, DNACPR)", "Tahadhari (maambukizi, ulinzi, DNACPR)"),
+      ],
+    },
+    {
+      id: "obs",
+      title: b("Baseline observations", "Vipimo vya mwanzo"),
+      fields: [
+        nm("temp", "Temperature", "Joto", "°C"),
+        nm("pulse", "Pulse", "Mapigo ya moyo", "/min"),
+        tx("bp", "Blood pressure", "Shinikizo la damu"),
+        nm("rr", "Respiration rate", "Kasi ya kupumua", "/min"),
+        nm("spo2", "SpO₂", "SpO₂", "%"),
+        nm("weight", "Weight", "Uzito", "kg"),
+        nm("pain", "Pain score (0 to 10)", "Alama ya maumivu (0 hadi 10)"),
+        nm("glucose", "Blood glucose", "Sukari ya damu", "mmol/L"),
+      ],
+    },
+    {
+      id: "adl",
+      title: b("Systems and daily living", "Mifumo na shughuli za kila siku"),
+      fields: [
+        tx("breathing", "Breathing", "Kupumua"),
+        tx("eating", "Eating, drinking and swallowing", "Kula, kunywa na kumeza"),
+        tx("elimination", "Elimination (urine, bowels, catheter)", "Haja ndogo na kubwa (katheta)"),
+        tx("mobility", "Mobility and aids", "Kujongea na vifaa saidizi"),
+        tx("hygiene", "Personal hygiene and dressing", "Usafi binafsi na kuvaa"),
+        tx("sleep", "Sleep and rest", "Usingizi na mapumziko"),
+        tx("skin", "Skin and wounds", "Ngozi na vidonda"),
+        nm("braden", "Braden score", "Alama ya Braden"),
+        nm("morse", "Morse fall score", "Alama ya Morse ya kuanguka"),
+        {
+          id: "language",
+          kind: "choice",
+          label: b("Preferred language", "Lugha anayopendelea"),
+          options: [
+            { value: "sw", label: b("Kiswahili", "Kiswahili") },
+            { value: "en", label: b("English", "Kiingereza") },
+            { value: "other", label: b("Other (interpreter needed?)", "Nyingine (mkalimani?)") },
+          ],
+        },
+        tx("communication", "Communication, sight and hearing", "Mawasiliano, kuona na kusikia"),
+        tx("psych", "Mood, anxiety, spiritual and cultural needs", "Hisia, wasiwasi, mahitaji ya kiroho na kitamaduni"),
+      ],
+    },
+    {
+      id: "social",
+      title: b("Social", "Kijamii"),
+      fields: [
+        tx("nok", "Next of kin and phone (printed only, never saved)", "Ndugu wa karibu na simu (inachapishwa tu)"),
+        tx("home", "Home situation and support", "Hali ya nyumbani na msaada"),
+        tx("assessedBy", "Assessed by", "Imefanywa na"),
+      ],
+    },
+  ],
+};
+
+const problem = (k: number): FormSection => ({
+  id: `p${k}`,
+  title: b(`Problem ${k}`, `Tatizo la ${k}`),
+  fields: [
+    tx(`p${k}dx`, "Nursing diagnosis or problem", "Utambuzi wa kiuguzi au tatizo"),
+    { id: `p${k}goal`, kind: "textarea", label: b("Goal (measurable, with a time frame)", "Lengo (linalopimika, lenye muda)"), rows: 2 },
+    { id: `p${k}int`, kind: "textarea", label: b("Nursing interventions", "Hatua za kiuguzi"), rows: 3 },
+    { id: `p${k}eval`, kind: "textarea", label: b("Evaluation (met, partly met, not met, and why)", "Tathmini (limefikiwa, kiasi, halijafikiwa, na kwa nini)"), rows: 2 },
+  ],
+});
+
+export const CARE_PLAN: FormDef = {
+  id: "care-plan",
+  title: b("Nursing care plan", "Mpango wa huduma ya uuguzi"),
+  version: "0.1",
+  source:
+    "Follows the nursing process: assessment, diagnosis, planning, implementation and evaluation. Problem wording is the nurse's own or from the hospital's approved nursing diagnosis list.",
+  sections: [
+    { id: "pt", title: b("Patient", "Mgonjwa"), fields: [tx("ref", "Patient name or ID (printed only, never saved)", "Jina au namba ya mgonjwa (inachapishwa tu)"), tx("date", "Date", "Tarehe"), tx("nurse", "Nurse", "Muuguzi")] },
+    problem(1),
+    problem(2),
+    problem(3),
+  ],
+};
+
+export const DISCHARGE_PLAN: FormDef = {
+  id: "discharge-plan",
+  title: b("Discharge planning", "Mpango wa kuruhusiwa"),
+  version: "0.1",
+  source: "Common discharge planning headings. Follow-up, medicines and referral details come from the medical team and the hospital's discharge policy.",
+  sections: [
+    { id: "pt", title: b("Patient", "Mgonjwa"), fields: [tx("ref", "Patient name or ID (printed only, never saved)", "Jina au namba ya mgonjwa (inachapishwa tu)"), tx("date", "Planned discharge date", "Tarehe ya kuruhusiwa"), tx("dest", "Discharged to (home, other facility)", "Anakwenda (nyumbani, kituo kingine)")] },
+    {
+      id: "edu",
+      title: b("Education given", "Elimu iliyotolewa"),
+      fields: [
+        chk("meds", "Medicines explained (name, purpose, dose, times, side effects)", "Dawa zimeelezwa (jina, kazi, kipimo, saa, madhara)"),
+        chk("wound", "Wound, drain or catheter care taught", "Utunzaji wa kidonda, mrija au katheta umefundishwa"),
+        chk("danger", "Danger signs and when to return taught", "Dalili za hatari na wakati wa kurudi zimefundishwa"),
+        chk("diet", "Diet and activity advice given", "Ushauri wa chakula na shughuli umetolewa"),
+        chk("teachBack", "Understanding checked by teach-back", "Uelewa umethibitishwa kwa kurudia maelezo"),
+        tx("eduLanguage", "Language used and who was taught", "Lugha iliyotumika na aliyefundishwa"),
+      ],
+    },
+    {
+      id: "follow",
+      title: b("Follow-up", "Ufuatiliaji"),
+      fields: [
+        tx("appointment", "Follow-up appointment (clinic, date)", "Miadi ya kurudi (kliniki, tarehe)"),
+        tx("referral", "Referrals (physiotherapy, nutrition, community)", "Rufaa (fiziotherapia, lishe, jamii)"),
+        tx("equipment", "Equipment and supplies", "Vifaa na mahitaji"),
+        tx("transport", "Transport", "Usafiri"),
+        tx("documents", "Documents given (summary, prescriptions)", "Nyaraka zilizotolewa (muhtasari, maagizo ya dawa)"),
+        tx("by", "Discharged by", "Ameruhusiwa na"),
+      ],
+    },
+  ],
+};
+
+export const FORMS: FormDef[] = [PREOP, PACU, ICU_DAILY, INTRAOP, NURSING_ADMISSION, CARE_PLAN, DISCHARGE_PLAN];

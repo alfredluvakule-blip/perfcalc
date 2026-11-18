@@ -83,6 +83,32 @@ const check = (ok, what) => {
     await p.goto(`${BASE}/#/anaesthesia`);
     await p.getByRole("button", { name: /^ASA III/ }).click();
     check(await p.isVisible("text=1 / "), `${name}: pre-op form counts a filled field`);
+    await p.getByRole("button", { name: "Intra-op" }).click();
+    await p.getByRole("button", { name: "Add row now" }).first().click();
+    check(await p.isVisible("text=1 row"), `${name}: intraoperative vital signs row added`);
+    if (name === "phone") await p.screenshot({ path: `${SHOTS}/${name}-intraop.png`, fullPage: true });
+
+    await p.goto(`${BASE}/#/scores/sofa`);
+    await p.getByLabel("PaO₂", { exact: true }).fill("95");
+    await p.getByLabel("FiO₂", { exact: true }).fill("21");
+    await p.getByRole("button", { name: "No", exact: true }).first().click();
+    await p.getByLabel("Platelets").fill("250");
+    await p.getByLabel("Bilirubin", { exact: true }).fill("10");
+    await p.getByLabel("GCS (3 to 15)").fill("12");
+    await p.getByLabel("Creatinine", { exact: true }).fill("80");
+    await p.getByLabel("Mean arterial pressure").fill("85");
+    check(!(await p.isVisible("text=Still to score")), `${name}: SOFA has every organ scored`);
+    check((await p.textContent("body")).includes("0 + 0 + 0 + 0 + 2 + 0 = 2"), `${name}: SOFA total 2 from GCS 12`);
+    if (name === "phone") await p.screenshot({ path: `${SHOTS}/${name}-sofa.png`, fullPage: true });
+
+    await p.goto(`${BASE}/#/nursing`);
+    await p.getByLabel("Reason for admission").fill("Pneumonia");
+    check(await p.isVisible("text=1 / "), `${name}: nursing admission form counts a filled field`);
+    await p.goto(`${BASE}/#/icu`);
+    await p.getByRole("button", { name: "Ventilator" }).click();
+    await p.getByRole("button", { name: "Add row now" }).click();
+    check(await p.isVisible("text=1 row"), `${name}: ventilator chart row added`);
+
     await p.goto(`${BASE}/#/pressure`);
     await p.getByLabel("Reposition every").fill("120");
     await p.getByRole("button", { name: "Repositioned now" }).click();

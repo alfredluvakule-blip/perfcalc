@@ -28,6 +28,7 @@ The app opens on a dashboard of modules (English or Kiswahili, light or dark). B
 - **Anaesthesia** (`src/modules/anaesthesia`): pre-anaesthetic assessment (history, fasting, airway with Mallampati, ASA class, plan, consent), PerfCalc's paediatric tube and LMA estimates, and a PACU recovery record; all printable.
 - **ICU daily review** (`src/modules/icu`): A to E, lines, infection, nutrition, skin, mobility, psychological support, family and discharge readiness; printable.
 - **Pressure injury** (`src/modules/pressure`): Braden category, repositioning log with reminders at the care-plan interval, NPIAP 2016 staging and wound log, and a printable daily prevention report.
+- **Phase 2c additions:** SOFA (with change from baseline) and FLACC in Clinical scores; an intraoperative anaesthesia record with a timed vital signs chart; ICU observation and ventilator charts with CSV export for Excel; and a nursing module (admission assessment, care plan by the nursing process, discharge planning).
 - **Audit log** on the device for confirmed calculations, double checks, printed labels and formulary changes.
 - **Perfusion (PerfCalc TZ)**, unchanged, described below. Old links such as `#sheet` and `#drugs` still open it.
 
