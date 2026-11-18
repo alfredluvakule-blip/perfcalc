@@ -54,6 +54,8 @@ const en = {
   modScoresDesc: "GCS, NEWS2, RASS, CAM-ICU, Braden, Modified Aldrete and Morse fall scale, with sources.",
   modAudit: "Audit log",
   modAuditDesc: "Calculations confirmed, double checks and changes on this device.",
+  modAccount: "Staff account",
+  modAccountDesc: "Optional sign-in: hospital role, staff invitations and the server audit log.",
   plannedPhase: "Planned for phase",
   plannedNote: "This module is in the development plan. Tools marked Ready can be used now.",
 };
@@ -109,6 +111,8 @@ const sw: Dict = {
   modScoresDesc: "GCS, NEWS2, RASS, CAM-ICU, Braden, Aldrete iliyorekebishwa na kipimo cha Morse cha kuanguka, pamoja na vyanzo.",
   modAudit: "Kumbukumbu za ukaguzi",
   modAuditDesc: "Hesabu zilizothibitishwa, uhakiki wa pili na mabadiliko kwenye kifaa hiki.",
+  modAccount: "Akaunti ya mtumishi",
+  modAccountDesc: "Kuingia si lazima: wadhifa hospitalini, mialiko ya watumishi na kumbukumbu za ukaguzi kwenye seva.",
   plannedPhase: "Imepangwa awamu ya",
   plannedNote: "Moduli hii iko kwenye mpango wa maendeleo. Zana zilizoandikwa Tayari zinaweza kutumika sasa.",
 };

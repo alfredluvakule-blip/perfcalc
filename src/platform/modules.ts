@@ -16,6 +16,7 @@ import {
   Stethoscope,
   Syringe,
   UserRound,
+  UserCog,
 } from "lucide-react";
 import type { TKey } from "./i18n";
 
@@ -54,6 +55,7 @@ export const MODULES: ModuleDef[] = [
   { id: "reports", letter: "K", title: "modReports", description: "modReportsDesc", icon: FileText, status: "planned", phase: 2, roles: ALL, keywords: "pdf word excel export charts ripoti" },
   { id: "analytics", letter: "L", title: "modAnalytics", description: "modAnalyticsDesc", icon: BarChart3, status: "planned", phase: 5, roles: ["admin", "educator"], keywords: "compliance statistics takwimu" },
   { id: "formulary", title: "modFormulary", description: "modFormularyDesc", icon: ClipboardCheck, status: "ready", roles: ["admin", "anaesthetist", "icu"], keywords: "concentration limits approved drugs hospital fomulari" },
+  { id: "account", title: "modAccount", description: "modAccountDesc", icon: UserCog, status: "partial", phase: 3, roles: ALL, keywords: "sign in login account role invite staff admin sync server akaunti" },
   { id: "audit", title: "modAudit", description: "modAuditDesc", icon: History, status: "ready", roles: ALL, keywords: "log history double check ukaguzi" },
 ];
 

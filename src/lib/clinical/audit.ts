@@ -1,7 +1,13 @@
 /**
- * Audit log kept on this device until the platform has a server.
+ * Audit log kept on this device. When a signed-in, approved user is syncing,
+ * each event is also queued for the hospital's server log (see auditSync.ts).
  * Append-only from the app's side; entries hold the calculation, not patient names.
  */
+
+import { enqueue, localOutbox } from "./auditSync";
+
+/** Set while a signed-in, approved user is syncing; events are then queued for the server. */
+export const SYNC_FLAG = "nap-sync-on";
 
 export type AuditType = "calculation-confirmed" | "double-check" | "label-printed" | "formulary-changed" | "fluid-entry" | "score-recorded" | "checklist-completed" | "checklist-changed";
 
@@ -32,6 +38,7 @@ export function logAudit(type: AuditType, summary: string, by?: string): AuditEv
   try {
     const next = [event, ...readAudit()].slice(0, MAX);
     window.localStorage.setItem(KEY, JSON.stringify(next));
+    if (window.localStorage.getItem(SYNC_FLAG) === "1") enqueue(localOutbox, event);
     window.dispatchEvent(new CustomEvent("nap-audit"));
   } catch {
     /* storage unavailable: the event is still returned */

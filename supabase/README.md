@@ -1,6 +1,6 @@
 # Supabase backend (Phase 3)
 
-`migrations/` holds the database schema and row level security (RLS) policies. This first slice stores staff accounts and roles, hospital formulary and checklist versions with approval, and an append-only audit log. **No patient data is stored on the server** until the Tanzania Personal Data Protection Act 2022 review is done.
+`migrations/` holds the database schema and row level security (RLS) policies. All tables and functions are prefixed `nap_`, because the Supabase project also hosts another app. This first slice stores staff accounts and roles, hospital formulary and checklist versions with approval, and an append-only audit log. **No patient data is stored on the server** until the Tanzania Personal Data Protection Act 2022 review is done.
 
 ## Access model
 
