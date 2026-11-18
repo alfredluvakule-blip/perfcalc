@@ -109,6 +109,10 @@ const check = (ok, what) => {
     await p.getByRole("button", { name: "Add row now" }).click();
     check(await p.isVisible("text=1 row"), `${name}: ventilator chart row added`);
 
+    await p.goto(`${BASE}/#/account`);
+    check(await p.isVisible("text=Staff sign-in"), `${name}: account page offers sign-in without blocking the app`);
+    if (name === "phone") await p.screenshot({ path: `${SHOTS}/${name}-account.png`, fullPage: true });
+
     await p.goto(`${BASE}/#/pressure`);
     await p.getByLabel("Reposition every").fill("120");
     await p.getByRole("button", { name: "Repositioned now" }).click();

@@ -12,6 +12,8 @@ import AnaesthesiaModule from "@/modules/anaesthesia/AnaesthesiaModule";
 import IcuModule from "@/modules/icu/IcuModule";
 import PressureModule from "@/modules/pressure/PressureModule";
 import NursingModule from "@/modules/nursing/NursingModule";
+import AccountModule from "@/modules/account/AccountModule";
+import { AccountProvider } from "./account";
 import { cn } from "@/lib/utils";
 import { I18nProvider, useI18n } from "./i18n";
 import { MODULES, findModule, type ModuleDef } from "./modules";
@@ -29,6 +31,7 @@ const VIEWS: Record<string, () => ReactNode> = {
   icu: () => <IcuModule />,
   pressure: () => <PressureModule />,
   nursing: () => <NursingModule />,
+  account: () => <AccountModule />,
 };
 
 function StatusPill({ m }: { m: ModuleDef }) {
@@ -195,7 +198,9 @@ function Shell() {
 export default function App() {
   return (
     <I18nProvider>
-      <Shell />
+      <AccountProvider>
+        <Shell />
+      </AccountProvider>
     </I18nProvider>
   );
 }
