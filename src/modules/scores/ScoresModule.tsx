@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Brain, Calculator, ClipboardPlus } from "lucide-react";
-import { CAMICU_META, NEWS2_META, OPTION_SCORES, camIcu, news2, scoreTotal, type Answers, type News2Input, type ScoreDef } from "@/lib/clinical/scores";
+import { CAMICU_META, NEWS2_META, OPTION_SCORES, SOFA_META, camIcu, news2, scoreTotal, sofa, type Answers, type News2Input, type ScoreDef, type SofaInput } from "@/lib/clinical/scores";
 import { logAudit } from "@/lib/clinical/audit";
 import { cn } from "@/lib/utils";
 import { useI18n } from "@/platform/i18n";
@@ -181,6 +181,65 @@ function CamIcu() {
   );
 }
 
+function Sofa() {
+  const [i, setI] = useState<SofaInput>({
+    pao2: null, pao2Unit: "mmHg", fio2Pct: null, respSupport: null, platelets: null, bilirubin: null, bilirubinUnit: "umol/L",
+    map: null, dopamine: null, dobutamine: false, adrenaline: null, noradrenaline: null, gcs: null, creatinine: null, creatinineUnit: "umol/L", urine24h: null, baseline: null,
+  });
+  const set = (p: Partial<SofaInput>) => setI({ ...i, ...p });
+  const r = sofa(i);
+  const tone = r.total === null ? "neutral" : r.total >= 12 ? "alert" : r.total >= 6 ? "warn" : r.total >= 2 ? "info" : "ok";
+  return (
+    <div className="space-y-4">
+      <Note>{SOFA_META.population}</Note>
+      <Panel title="Respiration" icon={Calculator}>
+        <Grid cols={3}>
+          <NumberField label="PaO₂" unit={i.pao2Unit} value={i.pao2} onChange={(v) => set({ pao2: v })} />
+          <Segmented label="PaO₂ unit" value={i.pao2Unit} onChange={(v) => set({ pao2Unit: v })} options={[{ value: "mmHg", label: "mmHg" }, { value: "kPa", label: "kPa" }]} />
+          <NumberField label="FiO₂" unit="%" value={i.fio2Pct} onChange={(v) => set({ fio2Pct: v })} hint="21 to 100" />
+          <Segmented label="On respiratory support (invasive or non-invasive)" value={i.respSupport === null ? "" : i.respSupport ? "yes" : "no"} onChange={(v) => set({ respSupport: v === "yes" })} options={[{ value: "yes", label: "Yes" }, { value: "no", label: "No" }]} className="col-span-2 sm:col-span-3" />
+        </Grid>
+      </Panel>
+      <Panel title="Blood, liver, brain, kidneys">
+        <Grid cols={3}>
+          <NumberField label="Platelets" unit="×10⁹/L" value={i.platelets} onChange={(v) => set({ platelets: v })} />
+          <NumberField label="Bilirubin" unit={i.bilirubinUnit === "mg/dL" ? "mg/dL" : "µmol/L"} value={i.bilirubin} onChange={(v) => set({ bilirubin: v })} />
+          <Segmented label="Bilirubin unit" value={i.bilirubinUnit} onChange={(v) => set({ bilirubinUnit: v })} options={[{ value: "umol/L", label: "µmol/L" }, { value: "mg/dL", label: "mg/dL" }]} />
+          <NumberField label="GCS (3 to 15)" value={i.gcs} onChange={(v) => set({ gcs: v })} hint="Best estimate off sedation" />
+          <NumberField label="Creatinine" unit={i.creatinineUnit === "mg/dL" ? "mg/dL" : "µmol/L"} value={i.creatinine} onChange={(v) => set({ creatinine: v })} />
+          <Segmented label="Creatinine unit" value={i.creatinineUnit} onChange={(v) => set({ creatinineUnit: v })} options={[{ value: "umol/L", label: "µmol/L" }, { value: "mg/dL", label: "mg/dL" }]} />
+          <NumberField label="Urine output, 24 h (optional)" unit="mL" value={i.urine24h} onChange={(v) => set({ urine24h: v })} />
+        </Grid>
+      </Panel>
+      <Panel title="Cardiovascular">
+        <Note>Enter the vasoactive drugs that have been running for at least 1 hour, in mcg/kg/min. Leave blank if not running. The infusion calculator converts mL/h to mcg/kg/min.</Note>
+        <Grid cols={3}>
+          <NumberField label="Mean arterial pressure" unit="mmHg" value={i.map} onChange={(v) => set({ map: v })} />
+          <NumberField label="Dopamine" unit="mcg/kg/min" value={i.dopamine} onChange={(v) => set({ dopamine: v })} />
+          <Segmented label="Dobutamine running" value={i.dobutamine ? "yes" : "no"} onChange={(v) => set({ dobutamine: v === "yes" })} options={[{ value: "yes", label: "Yes" }, { value: "no", label: "No" }]} />
+          <NumberField label="Adrenaline (epinephrine)" unit="mcg/kg/min" value={i.adrenaline} onChange={(v) => set({ adrenaline: v })} />
+          <NumberField label="Noradrenaline (norepinephrine)" unit="mcg/kg/min" value={i.noradrenaline} onChange={(v) => set({ noradrenaline: v })} />
+        </Grid>
+      </Panel>
+      <Panel title="SOFA result" icon={Calculator}>
+        {r.warnings.length ? <Warnings items={r.warnings.map((text) => ({ severity: "caution" as const, text }))} /> : null}
+        {r.missing.length ? <Note tone="warn">Still to score: {r.missing.join(", ")}. Organs scored so far add up to {r.partial}.</Note> : null}
+        <Grid cols={2}>
+          <Result big tone={tone} label="SOFA (0 to 24)" value={r.total === null ? "—" : String(r.total)} />
+          <NumberField label="Baseline SOFA, if known" value={i.baseline} onChange={(v) => set({ baseline: v })} hint="0 if no known organ dysfunction" />
+        </Grid>
+        {r.delta !== null ? (
+          <Warnings items={[{ severity: r.delta >= 2 ? "caution" : "info", text: r.delta >= 2 ? `Rise of ${r.delta} from baseline: under Sepsis-3, a rise of 2 or more with suspected infection indicates sepsis. Escalate per local policy.` : `Change from baseline: ${r.delta >= 0 ? "+" : ""}${r.delta}.` }]} />
+        ) : null}
+        <InputsTable rows={r.organs.map((o) => [o.name, `${o.points ?? "—"}  (${o.detail})`])} />
+        <Steps formula="SOFA = respiration + coagulation + liver + cardiovascular + CNS + renal (each 0 to 4)" steps={r.total !== null ? [`${r.organs.map((o) => o.points).join(" + ")} = ${r.total}`] : []} />
+        <RecordBar summary={r.total !== null ? `SOFA ${r.total} (${r.organs.map((o) => `${o.name} ${o.points}`).join(", ")})${r.delta !== null ? `, change ${r.delta}` : ""}` : null} />
+      </Panel>
+      <SourceBox meta={SOFA_META} />
+    </div>
+  );
+}
+
 const TOOLS = [
   { id: "gcs", label: "GCS" },
   { id: "news2", label: "NEWS2" },
@@ -189,6 +248,8 @@ const TOOLS = [
   { id: "braden", label: "Braden" },
   { id: "aldrete", label: "Aldrete" },
   { id: "morse", label: "Morse falls" },
+  { id: "sofa", label: "SOFA" },
+  { id: "flacc", label: "FLACC (child pain)" },
 ];
 
 export default function ScoresModule({ initial }: { initial?: string }) {
@@ -203,6 +264,9 @@ export default function ScoresModule({ initial }: { initial?: string }) {
             type="button"
             role="tab"
             aria-selected={tool === t.id}
+            ref={(el) => {
+              if (el && tool === t.id && initial === t.id) el.scrollIntoView({ block: "nearest", inline: "center" });
+            }}
             onClick={() => setTool(t.id)}
             className={cn(
               "h-11 shrink-0 rounded-full border px-4 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
@@ -213,8 +277,8 @@ export default function ScoresModule({ initial }: { initial?: string }) {
           </button>
         ))}
       </div>
-      {tool === "news2" ? <News2 /> : tool === "cam" ? <CamIcu /> : def ? <OptionScore key={def.id} def={def} /> : null}
-      <Note>SOFA, APACHE II and paediatric scores are planned next. Scores support clinical judgment and local escalation policy; they do not replace them.</Note>
+      {tool === "news2" ? <News2 /> : tool === "cam" ? <CamIcu /> : tool === "sofa" ? <Sofa /> : def ? <OptionScore key={def.id} def={def} /> : null}
+      <Note>APACHE II and further paediatric scores are planned. Scores support clinical judgment and local escalation policy; they do not replace them.</Note>
     </div>
   );
 }

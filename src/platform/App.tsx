@@ -11,6 +11,7 @@ import ChecklistsModule from "@/modules/checklists/ChecklistsModule";
 import AnaesthesiaModule from "@/modules/anaesthesia/AnaesthesiaModule";
 import IcuModule from "@/modules/icu/IcuModule";
 import PressureModule from "@/modules/pressure/PressureModule";
+import NursingModule from "@/modules/nursing/NursingModule";
 import { cn } from "@/lib/utils";
 import { I18nProvider, useI18n } from "./i18n";
 import { MODULES, findModule, type ModuleDef } from "./modules";
@@ -22,11 +23,12 @@ const VIEWS: Record<string, () => ReactNode> = {
   fluids: () => <FluidsModule />,
   formulary: () => <FormularyEditor />,
   audit: () => <AuditLog />,
-  scores: () => <ScoresModule />,
+  scores: () => <ScoresModule key={window.location.hash} initial={window.location.hash.split("/")[2]} />,
   checklists: () => <ChecklistsModule />,
   anaesthesia: () => <AnaesthesiaModule />,
   icu: () => <IcuModule />,
   pressure: () => <PressureModule />,
+  nursing: () => <NursingModule />,
 };
 
 function StatusPill({ m }: { m: ModuleDef }) {

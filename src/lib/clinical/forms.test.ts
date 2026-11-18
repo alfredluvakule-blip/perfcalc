@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { ASA_CLASSES, FORMS, MALLAMPATI, NPIAP_STAGES, filledCount, nextTurnDue, turnCompliance, type PressureState } from "./forms";
+import { ASA_CLASSES, CORMACK_LEHANE, FORMS, MALLAMPATI, NPIAP_STAGES, filledCount, nextTurnDue, turnCompliance, type PressureState } from "./forms";
 
 describe("forms", () => {
   it("every form is bilingual, sourced and has unique field ids", () => {
@@ -19,6 +19,7 @@ describe("forms", () => {
   it("published classifications are complete", () => {
     expect(ASA_CLASSES.map((a) => a.value)).toEqual(["I", "II", "III", "IV", "V", "VI"]);
     expect(MALLAMPATI.map((a) => a.value)).toEqual(["I", "II", "III", "IV"]);
+    expect(CORMACK_LEHANE.map((a) => a.value)).toEqual(["1", "2", "3", "4"]);
     expect(NPIAP_STAGES.map((a) => a.value)).toEqual(["1", "2", "3", "4", "U", "DTPI", "MDRPI", "MMPI"]);
   });
   it("counts filled fields; false checks and blank text do not count", () => {

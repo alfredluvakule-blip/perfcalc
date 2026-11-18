@@ -1,5 +1,7 @@
 import { Baby } from "lucide-react";
-import { PACU, PREOP, type FormValues } from "@/lib/clinical/forms";
+import { INTRAOP, PACU, PREOP, type FormValues } from "@/lib/clinical/forms";
+import { INTRAOP_VITALS, type ChartRow } from "@/lib/clinical/charts";
+import ChartLog from "@/components/clinical/ChartLog";
 import { airway, fmt } from "@/lib/perfusion";
 import FormRunner from "@/components/clinical/FormRunner";
 import { Grid, Note, NumberField, Panel, Result, Segmented } from "@/components/calculators/shared";
@@ -35,7 +37,9 @@ function AirwaySizes() {
 }
 
 export default function AnaesthesiaModule() {
-  const [tool, setTool] = useSessionState<"preop" | "airway" | "pacu">("an-tool", "preop");
+  const [tool, setTool] = useSessionState<"preop" | "airway" | "intraop" | "pacu">("an-tool", "preop");
+  const [intra, setIntra] = useSessionState<FormValues>("form-intraop", {});
+  const [vitals, setVitals] = useSessionState<ChartRow[]>("chart-intraop-vitals", []);
   const [pre, setPre] = useSessionState<FormValues>("form-preop", {});
   const [pacu, setPacu] = useSessionState<FormValues>("form-pacu", {});
   return (
@@ -47,20 +51,27 @@ export default function AnaesthesiaModule() {
         options={[
           { value: "preop", label: "Pre-op" },
           { value: "airway", label: "Airway sizes" },
+          { value: "intraop", label: "Intra-op" },
           { value: "pacu", label: "Recovery" },
         ]}
       />
       {tool === "preop" ? <FormRunner def={PREOP} values={pre} onChange={setPre} /> : null}
       {tool === "airway" ? <AirwaySizes /> : null}
+      {tool === "intraop" ? (
+        <>
+          <ChartLog def={INTRAOP_VITALS} rows={vitals} onChange={setVitals} />
+          <FormRunner def={INTRAOP} values={intra} onChange={setIntra} />
+        </>
+      ) : null}
       {tool === "pacu" ? (
         <>
           <Note>
-            Score the Modified Aldrete in <a className="font-semibold underline" href="#/scores">Clinical scores</a> and enter the total below.
+            Score the Modified Aldrete in <a className="font-semibold underline" href="#/scores/aldrete">Clinical scores</a> and enter the total below.
           </Note>
           <FormRunner def={PACU} values={pacu} onChange={setPacu} />
         </>
       ) : null}
-      <Note>The intraoperative anaesthesia record (vital signs, drugs, fluids, ventilation) and the difficult airway checklist come next. Use the Checklist library for the WHO Surgical Safety Checklist now.</Note>
+      <Note>Use the Checklist library for the WHO Surgical Safety Checklist. A difficult airway checklist needs a locally approved algorithm and will be added through the hospital checklist editor.</Note>
     </div>
   );
 }

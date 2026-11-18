@@ -421,7 +421,86 @@ export const MORSE: ScoreDef = {
   },
 };
 
-export const OPTION_SCORES: ScoreDef[] = [GCS, RASS, BRADEN, ALDRETE, MORSE];
+export const FLACC: ScoreDef = {
+  id: "flacc",
+  title: "FLACC behavioural pain scale",
+  short: "FLACC",
+  population: "Children who cannot report their pain, validated for postoperative pain from 2 months to 7 years.",
+  items: [
+    {
+      id: "F",
+      label: "Face",
+      sw: "Uso",
+      options: [
+        { points: 0, label: "No particular expression or smile", sw: "Hakuna dalili maalum au anatabasamu" },
+        { points: 1, label: "Occasional grimace or frown, withdrawn, disinterested", sw: "Mara kwa mara anakunja uso, amejitenga" },
+        { points: 2, label: "Frequent to constant quivering chin, clenched jaw", sw: "Kidevu kinatetemeka mara kwa mara, taya zimebanwa" },
+      ],
+    },
+    {
+      id: "L",
+      label: "Legs",
+      sw: "Miguu",
+      options: [
+        { points: 0, label: "Normal position or relaxed", sw: "Mkao wa kawaida au imelegea" },
+        { points: 1, label: "Uneasy, restless, tense", sw: "Hana raha, hatulii, imekaza" },
+        { points: 2, label: "Kicking, or legs drawn up", sw: "Anapiga mateke au amevuta miguu juu" },
+      ],
+    },
+    {
+      id: "A",
+      label: "Activity",
+      sw: "Shughuli",
+      options: [
+        { points: 0, label: "Lying quietly, normal position, moves easily", sw: "Amelala kimya, anajongea kwa urahisi" },
+        { points: 1, label: "Squirming, shifting back and forth, tense", sw: "Anajinyonga, anahama huku na huko, amekaza" },
+        { points: 2, label: "Arched, rigid or jerking", sw: "Amepinda mgongo, amekakamaa au anashtuka" },
+      ],
+    },
+    {
+      id: "C",
+      label: "Cry",
+      sw: "Kilio",
+      options: [
+        { points: 0, label: "No cry (awake or asleep)", sw: "Hakuna kilio (macho au amelala)" },
+        { points: 1, label: "Moans or whimpers, occasional complaint", sw: "Anagugumia, analalamika mara moja moja" },
+        { points: 2, label: "Crying steadily, screams or sobs, frequent complaints", sw: "Analia mfululizo, anapiga kelele, analalamika mara nyingi" },
+      ],
+    },
+    {
+      id: "Co",
+      label: "Consolability",
+      sw: "Kubembelezeka",
+      options: [
+        { points: 0, label: "Content, relaxed", sw: "Ametulia, ameridhika" },
+        { points: 1, label: "Reassured by occasional touching, hugging or talking; distractible", sw: "Anatulizwa kwa kuguswa, kukumbatiwa au kuongeleshwa" },
+        { points: 2, label: "Difficult to console or comfort", sw: "Ni vigumu kumbembeleza" },
+      ],
+    },
+  ],
+  bands: [
+    { min: 0, max: 0, label: "Relaxed and comfortable (0)", tone: "ok" },
+    { min: 1, max: 3, label: "Mild discomfort (1–3)", tone: "info" },
+    { min: 4, max: 6, label: "Moderate pain (4–6)", tone: "warn", action: "Treat per the prescription and local paediatric pain policy, then reassess." },
+    { min: 7, max: 10, label: "Severe discomfort or pain (7–10)", tone: "alert", action: "Treat per the prescription and local paediatric pain policy, and reassess promptly. Escalate if pain is not controlled." },
+  ],
+  meta: {
+    id: "flacc",
+    title: "FLACC behavioural pain scale",
+    population: "Children 2 months to 7 years who cannot self-report, originally validated after surgery.",
+    sources: [
+      "Merkel SI, Voepel-Lewis T, Shayevitz JR, Malviya S. The FLACC: a behavioral scale for scoring postoperative pain in young children. Pediatr Nurs. 1997;23(3):293–297.",
+    ],
+    limitations: [
+      "Observe for 1 to 5 minutes (longer if asleep) before scoring.",
+      "Use a self-report scale for children who can give one.",
+      "Analgesic choice and doses come from the prescription; this tool only measures pain behaviour.",
+    ],
+    ...reviewed,
+  },
+};
+
+export const OPTION_SCORES: ScoreDef[] = [GCS, RASS, BRADEN, ALDRETE, MORSE, FLACC];
 
 /* ---------------------------- NEWS2 ---------------------------- */
 
@@ -613,6 +692,159 @@ export const CAMICU_META: ContentMeta = {
     "Follow the official test wording for the letters test and the four questions.",
     "Cannot be assessed at RASS −4 or −5.",
     "A positive result needs medical review to look for causes.",
+  ],
+  ...reviewed,
+};
+
+/* ---------------------------- SOFA ---------------------------- */
+
+export interface SofaInput {
+  /** PaO₂ and its unit. */
+  pao2: number | null;
+  pao2Unit: "mmHg" | "kPa";
+  /** Inspired oxygen, percent (21 to 100). */
+  fio2Pct: number | null;
+  /** Mechanical or non-invasive respiratory support. */
+  respSupport: boolean | null;
+  /** Platelets ×10⁹/L (same as ×10³/µL). */
+  platelets: number | null;
+  bilirubin: number | null;
+  bilirubinUnit: "umol/L" | "mg/dL";
+  /** Mean arterial pressure, mmHg. */
+  map: number | null;
+  /** Vasoactive doses in mcg/kg/min, given for at least 1 hour. Null or 0 = not running. */
+  dopamine: number | null;
+  dobutamine: boolean;
+  adrenaline: number | null;
+  noradrenaline: number | null;
+  gcs: number | null;
+  creatinine: number | null;
+  creatinineUnit: "umol/L" | "mg/dL";
+  /** Urine output over 24 h, mL. Optional. */
+  urine24h: number | null;
+  /** Known baseline SOFA, for the change. Optional. */
+  baseline: number | null;
+}
+
+export interface SofaOrgan {
+  id: "resp" | "coag" | "liver" | "cardio" | "cns" | "renal";
+  name: string;
+  points: number | null;
+  detail: string;
+}
+
+export interface SofaResult {
+  organs: SofaOrgan[];
+  total: number | null;
+  /** Sum of the organs scored so far. */
+  partial: number;
+  missing: string[];
+  delta: number | null;
+  warnings: string[];
+}
+
+const ok = (x: number | null | undefined): x is number => typeof x === "number" && Number.isFinite(x);
+const KPA_TO_MMHG = 7.50062;
+
+export function sofa(i: SofaInput): SofaResult {
+  const organs: SofaOrgan[] = [];
+  const warnings: string[] = [];
+
+  // Respiration: PaO₂/FiO₂ in mmHg. 3 and 4 need respiratory support.
+  if (ok(i.pao2) && ok(i.fio2Pct) && i.fio2Pct >= 21 && i.fio2Pct <= 100 && i.respSupport !== null) {
+    const pao2 = i.pao2Unit === "kPa" ? i.pao2 * KPA_TO_MMHG : i.pao2;
+    const pf = pao2 / (i.fio2Pct / 100);
+    let p = pf >= 400 ? 0 : pf >= 300 ? 1 : 2;
+    if (pf < 200 && i.respSupport) p = pf < 100 ? 4 : 3;
+    const note = pf < 200 && !i.respSupport ? " (3 and 4 require respiratory support, so 2)" : "";
+    organs.push({ id: "resp", name: "Respiration", points: p, detail: `PaO₂/FiO₂ = ${pao2.toFixed(0)} ÷ ${(i.fio2Pct / 100).toFixed(2)} = ${pf.toFixed(0)} mmHg${note}` });
+  } else {
+    if (ok(i.fio2Pct) && (i.fio2Pct < 21 || i.fio2Pct > 100)) warnings.push("FiO₂ must be between 21 and 100%.");
+    organs.push({ id: "resp", name: "Respiration", points: null, detail: "Needs PaO₂, FiO₂ and whether on respiratory support" });
+  }
+
+  if (ok(i.platelets)) {
+    const x = i.platelets;
+    organs.push({ id: "coag", name: "Coagulation", points: x >= 150 ? 0 : x >= 100 ? 1 : x >= 50 ? 2 : x >= 20 ? 3 : 4, detail: `Platelets ${x} ×10⁹/L` });
+  } else organs.push({ id: "coag", name: "Coagulation", points: null, detail: "Needs platelets" });
+
+  if (ok(i.bilirubin)) {
+    const x = i.bilirubin;
+    const p =
+      i.bilirubinUnit === "mg/dL"
+        ? x < 1.2 ? 0 : x < 2 ? 1 : x < 6 ? 2 : x < 12 ? 3 : 4
+        : x < 20 ? 0 : x <= 32 ? 1 : x <= 101 ? 2 : x <= 204 ? 3 : 4;
+    organs.push({ id: "liver", name: "Liver", points: p, detail: `Bilirubin ${x} ${i.bilirubinUnit === "mg/dL" ? "mg/dL" : "µmol/L"}` });
+  } else organs.push({ id: "liver", name: "Liver", points: null, detail: "Needs bilirubin" });
+
+  {
+    const dop = ok(i.dopamine) && i.dopamine > 0 ? i.dopamine : 0;
+    const adr = ok(i.adrenaline) && i.adrenaline > 0 ? i.adrenaline : 0;
+    const nor = ok(i.noradrenaline) && i.noradrenaline > 0 ? i.noradrenaline : 0;
+    const anyVaso = dop > 0 || adr > 0 || nor > 0 || i.dobutamine;
+    let p: number | null = null;
+    const why: string[] = [];
+    if (dop > 15 || adr > 0.1 || nor > 0.1) {
+      p = 4;
+      why.push(dop > 15 ? `dopamine ${dop} > 15` : adr > 0.1 ? `adrenaline ${adr} > 0.1` : `noradrenaline ${nor} > 0.1`);
+    } else if (dop > 5 || adr > 0 || nor > 0) {
+      p = 3;
+      why.push(dop > 5 ? `dopamine ${dop} > 5` : adr > 0 ? `adrenaline ${adr} ≤ 0.1` : `noradrenaline ${nor} ≤ 0.1`);
+    } else if (dop > 0 || i.dobutamine) {
+      p = 2;
+      why.push(dop > 0 ? `dopamine ${dop} ≤ 5` : "dobutamine (any dose)");
+    } else if (ok(i.map)) {
+      p = i.map < 70 ? 1 : 0;
+      why.push(`MAP ${i.map} mmHg`);
+    }
+    organs.push({ id: "cardio", name: "Cardiovascular", points: p, detail: p === null ? "Needs MAP, or the vasoactive drugs running" : `${why.join(", ")}${anyVaso ? " mcg/kg/min" : ""}` });
+  }
+
+  if (ok(i.gcs)) {
+    if (i.gcs < 3 || i.gcs > 15) {
+      warnings.push("GCS must be between 3 and 15.");
+      organs.push({ id: "cns", name: "Central nervous system", points: null, detail: "GCS out of range" });
+    } else {
+      const g = i.gcs;
+      organs.push({ id: "cns", name: "Central nervous system", points: g === 15 ? 0 : g >= 13 ? 1 : g >= 10 ? 2 : g >= 6 ? 3 : 4, detail: `GCS ${g}` });
+    }
+  } else organs.push({ id: "cns", name: "Central nervous system", points: null, detail: "Needs GCS" });
+
+  {
+    let byCr: number | null = null;
+    if (ok(i.creatinine)) {
+      const x = i.creatinine;
+      byCr =
+        i.creatinineUnit === "mg/dL"
+          ? x < 1.2 ? 0 : x < 2 ? 1 : x < 3.5 ? 2 : x < 5 ? 3 : 4
+          : x < 110 ? 0 : x <= 170 ? 1 : x <= 299 ? 2 : x <= 440 ? 3 : 4;
+    }
+    const byUo = ok(i.urine24h) ? (i.urine24h < 200 ? 4 : i.urine24h < 500 ? 3 : 0) : null;
+    const p = byCr === null && byUo === null ? null : Math.max(byCr ?? 0, byUo ?? 0);
+    const parts = [ok(i.creatinine) ? `creatinine ${i.creatinine} ${i.creatinineUnit === "mg/dL" ? "mg/dL" : "µmol/L"} → ${byCr}` : null, ok(i.urine24h) ? `urine ${i.urine24h} mL/24 h → ${byUo}` : null].filter(Boolean);
+    organs.push({ id: "renal", name: "Renal", points: p, detail: p === null ? "Needs creatinine or 24-hour urine output" : `${parts.join("; ")}${parts.length > 1 ? " (higher counts)" : ""}` });
+  }
+
+  const missing = organs.filter((o) => o.points === null).map((o) => o.name);
+  const partial = organs.reduce((s, o) => s + (o.points ?? 0), 0);
+  const total = missing.length ? null : partial;
+  const delta = total !== null && ok(i.baseline) ? total - i.baseline : null;
+  return { organs, total, partial, missing, delta, warnings };
+}
+
+export const SOFA_META: ContentMeta = {
+  id: "sofa",
+  title: "Sequential Organ Failure Assessment (SOFA)",
+  population: "Adult ICU patients. Score the worst value in each 24-hour period.",
+  sources: [
+    "Vincent JL, Moreno R, Takala J, et al. The SOFA (Sepsis-related Organ Failure Assessment) score to describe organ dysfunction/failure. Intensive Care Med. 1996;22(7):707–710.",
+    "Singer M, et al. The Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). JAMA. 2016;315(8):801–810: a rise of 2 or more from baseline indicates organ dysfunction.",
+  ],
+  limitations: [
+    "Vasoactive doses are those in the original table, in mcg/kg/min, given for at least 1 hour. They score the drug that is running; they are not dosing advice.",
+    "GCS should be the patient's best estimate without sedation; sedated patients are hard to score.",
+    "Assume a baseline of 0 only if there is no known prior organ dysfunction.",
+    "Not validated for children; use a paediatric SOFA.",
   ],
   ...reviewed,
 };
