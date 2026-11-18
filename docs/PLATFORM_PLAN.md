@@ -103,7 +103,7 @@ Phase 2a (scores and checklist library) is built: GCS, NEWS2, RASS, CAM-ICU, Bra
 
 ### Phase 3: backend, accounts, roles, audit
 
-Phase 3a is built (18 Nov 2026): Supabase tables prefixed `nap_` in the existing "perfusionist" project, chosen by the owner. Invitation-only staff accounts with roles, hospital administrator screen (invite, change role, suspend), server audit log with an offline outbox, versioned formulary and checklist tables with admin approval (screens next). RLS tested locally (`npm run test:rls`) and checked on the live database inside a rolled-back transaction. Next in Phase 3: share the hospital formulary and checklists through the server with approval, then offline sync of records once the data protection review allows patient data.
+Phase 3a is built (18 Nov 2026): Supabase tables prefixed `nap_` in the existing "perfusionist" project, chosen by the owner. Invitation-only staff accounts with roles, hospital administrator screen (invite, change role, suspend), server audit log with an offline outbox, versioned formulary and checklist tables with admin approval (screens next). RLS tested locally (`npm run test:rls`) and checked on the live database inside a rolled-back transaction. Phase 3b is built: the formulary and the hospital checklist library are shared through the server as numbered versions (submit draft, administrator approves, devices switch to the newest approved version on request). Next in Phase 3: offline sync of records once the data protection review allows patient data.
 
 
 - Supabase (PostgreSQL, Auth, Row Level Security, Storage). Hospitals, departments, users, roles (nurse, anaesthetist, ICU, theatre, administrator, educator).

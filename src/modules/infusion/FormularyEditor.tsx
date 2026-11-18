@@ -3,6 +3,7 @@ import { ClipboardCheck, Download, Plus, Trash2, Upload } from "lucide-react";
 import { exportFormulary, loadFormulary, parseFormularyFile, saveFormulary, validateEntry, type FormularyEntry, type Population, type RouteRule } from "@/lib/clinical/formulary";
 import { AMOUNT_UNITS, DOSE_UNITS, show, type AmountUnit } from "@/lib/clinical/units";
 import { logAudit, newId } from "@/lib/clinical/audit";
+import ServerVersions from "@/components/clinical/ServerVersions";
 import { Button, Grid, Note, NumberField, Panel, Pill, SelectField, TextField } from "@/components/calculators/shared";
 
 const blank = (): FormularyEntry => ({ id: newId(), drug: "", population: "adult", doseUnit: "mcg/kg/min", concentrations: [], route: "unspecified", source: "" });
@@ -182,6 +183,19 @@ export default function FormularyEditor() {
           <Button onClick={() => setDraft(blank())}>Clear</Button>
         </div>
       </Panel>
+      <ServerVersions
+        kind="formulary"
+        local={{ ...exportFormulary(entries), exportedOn: "" }}
+        summarize={(d) => {
+          const n = Array.isArray((d as { entries?: unknown[] })?.entries) ? (d as { entries: unknown[] }).entries.length : 0;
+          return `${n} entr${n === 1 ? "y" : "ies"}`;
+        }}
+        onApply={(d, v) => {
+          const { entries: next, problems: p } = parseFormularyFile(JSON.stringify(d));
+          commit(next, `Applied hospital formulary v${v} from the server (${next.length} entries)`);
+          setMsg([`Now using the approved hospital formulary v${v}.`, ...p]);
+        }}
+      />
     </div>
   );
 }
